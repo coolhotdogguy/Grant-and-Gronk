@@ -8,7 +8,7 @@ public class TopDown_Controller : MonoBehaviour
 
     float horizontal;
     float vertical;
-    float moveLimiter = 0.7f;
+    float moveLimiter = 0.7f; //limiter is to compensate the speed doubling when moving diagonally
 
     [SerializeField] float runSpeed = 20.0f;
 
