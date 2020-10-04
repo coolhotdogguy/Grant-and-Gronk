@@ -8,7 +8,6 @@ public class TopDown_Controller : MonoBehaviour
 
     float horizontal;
     float vertical;
-    float moveLimiter = 0.7f; //limiter is to compensate the speed doubling when moving diagonally
 
     [SerializeField] float runSpeed = 20.0f;
 
@@ -28,11 +27,15 @@ public class TopDown_Controller : MonoBehaviour
     {
         if (horizontal != 0 && vertical != 0) // Check for diagonal movement
         {
-            // limit movement speed diagonally, so you move at 70% speed
+            // limit movement speed diagonally
+
+            float moveLimiter = Mathf.Sqrt(runSpeed * runSpeed / 2) / runSpeed; // Calculate moveLimiter using the Pythagorean theorem
+
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
         }
 
         rb2d.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        // Print Out Velocity: Debug.Log(Mathf.Sqrt(rb2d.velocity.x * rb2d.velocity.x + rb2d.velocity.y * rb2d.velocity.y));
     }
 }
