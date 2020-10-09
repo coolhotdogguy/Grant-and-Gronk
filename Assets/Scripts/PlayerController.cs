@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,9 +23,19 @@ public class PlayerController : MonoBehaviour
         coll = GetComponent<Collider2D>();
     }
 
+    void OnMove(InputValue value)
+    {
+        value.Get<float>(); // This will get float from action, left == -1f, right == 1f
+    }
+
+    void OnJump()
+    {
+        // jump code here
+    }
+
     private void FixedUpdate()
     {
-        if (Input.GetButtonDown("Jump"))
+        /*if (Input.GetButtonDown("Jump"))
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
         }
@@ -39,6 +50,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxisRaw("Vertical") < 0) //Left is pressed
         {
             rb2d.velocity = new Vector2(-playerSpeed, rb2d.velocity.y);
-        }
+        }*/
     }
 }
