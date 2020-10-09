@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb2d;
     Collider2D coll;
 
+    float move;
 
     private void Awake()
     {
@@ -25,16 +26,19 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        value.Get<float>(); // This will get float from action, left == -1f, right == 1f
+        move = value.Get<float>(); // This will get float from action, left == -1f, right == 1f;
     }
 
     void OnJump()
     {
         // jump code here
+        rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity); 
     }
 
     private void FixedUpdate()
     {
+        rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y);
+
         /*if (Input.GetButtonDown("Jump"))
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
