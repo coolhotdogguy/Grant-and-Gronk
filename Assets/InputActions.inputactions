@@ -15,7 +15,7 @@
                 },
                 {
                     "name": "Jump",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "3303702d-198a-4bd4-87b9-a696cc786ce1",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -57,15 +57,26 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "d236d8d0-43aa-4eb9-82bd-a9de82e40f7d",
+                    "name": "1D Axis",
+                    "id": "6dd59ca0-a8a6-4a7c-b710-f1254ee36ac1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "ef15408c-4454-4cc3-aabc-c138c09b4019",
                     "path": "<Keyboard>/#(W)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         },
