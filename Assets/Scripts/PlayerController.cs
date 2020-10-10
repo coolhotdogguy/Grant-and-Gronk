@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb2d;
     Collider2D coll;
 
-    float move; 
+    float move;
+    bool isJumpButtonPressed;
     float jump;
 
     private void Awake()
@@ -49,9 +50,9 @@ public class PlayerController : MonoBehaviour
     {
         rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movemnet
 
-        if (jump == 0 && rb2d.velocity.y < 0) //if jump is released while player is moving up
+        if (!isJumpButtonPressed && rb2d.velocity.y > 0) //if jump is released while player is moving up
         {
-            // Broken: rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration); //slowdown jump velocity
+            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration); //slowdown jump velocity
         }
         if ((coyoteTimeTimer > 0f && jump == 1) || (jumpForgivenessBufferTimer > 0f && isGrounded))
         {
@@ -76,6 +77,8 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        isJumpButtonPressed = value.isPressed;
+
         if (!isGrounded && value.isPressed) 
         {
             handleJumpForgiveness = true;
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        jump = value.Get<float>(); // jumpPressed == 1f, jumpReleased == 0f
+        jump = value.Get<float>(); 
 
         /*if (coyoteTimeTimer > 0f)
         {
@@ -91,10 +94,10 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
-    void OnJumpReleased()
+    /*void OnJumpReleased()
     {
         rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration);
-    }
+    }*/
 
     private void HandleJumpForgivenessBuffer()
     {
