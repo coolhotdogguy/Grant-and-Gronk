@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
     [Header("Jump Tuning")]
     [SerializeField] float jumpVelocity = 5f;
     [SerializeField] float jumpButtonReleaseDeceleration = 0.5f;
-    float jumpForgivenessBuffer = 0.1f; //allows jump input a little before player lands
-    float jumpForgivenessBufferTimer; 
+    float jumpForgivenessBuffer = 0.15f; //allows jump input a little before player lands
+    float jumpForgivenessBufferTimer;
+    bool handleJumpForgiveness;
     [SerializeField] float coyoteTime = 0.2f; //extra time to jump once platform is left
     float coyoteTimeTimer; //counts down when player leaves a ledge
     // [SerializeField] float fallMultiplier = 2.5f; was used for faster fall after peak of jump
@@ -26,8 +27,7 @@ public class PlayerController : MonoBehaviour
     Collider2D coll;
 
     float move; 
-    int jump;
-
+    float jump;
 
     private void Awake()
     {
@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
         HandleCoyoteTime();
 
         HandleJumpForgivenessBuffer();
-
     }
 
 
@@ -50,13 +49,17 @@ public class PlayerController : MonoBehaviour
     {
         rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movemnet
 
-        if (jump == 1 && coyoteTimeTimer > 0f) //if jump pressed and jump still allowed
+        if (jump == 0 && rb2d.velocity.y < 0) //if jump is released while player is moving up
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity); //jump
+            // Broken: rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration); //slowdown jump velocity
         }
-        if (jump == 0 && rb2d.velocity.y > 0) //if jump is released while player is moving up
+        if ((coyoteTimeTimer > 0f && jump == 1) || (jumpForgivenessBufferTimer > 0f && isGrounded))
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration); //slowdown jump velocity
+            Debug.Log(0);
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
+            jumpForgivenessBufferTimer = 0f;
+            coyoteTimeTimer = 0f;
+            jump = 0;
         }
 
         /*if (rb2d.velocity.y < 0) //if falling, fall even faster
@@ -73,24 +76,42 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        if (!isGrounded && value.isPressed) 
+        {
+            handleJumpForgiveness = true;
+            jumpForgivenessBufferTimer = jumpForgivenessBuffer;
+            return;
+        }
+
         jump = value.Get<float>(); // jumpPressed == 1f, jumpReleased == 0f
+
+        /*if (coyoteTimeTimer > 0f)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
+        }*/
+    }
+
+    void OnJumpReleased()
+    {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration);
     }
 
     private void HandleJumpForgivenessBuffer()
     {
-        if (jump == 1)
-        {
-            jumpForgivenessBufferTimer = jumpForgivenessBuffer;
-        }
-        else
+        if (handleJumpForgiveness)
         {
             jumpForgivenessBufferTimer -= Time.deltaTime;
+        }
+        if(handleJumpForgiveness && jumpForgivenessBufferTimer <= 0f)
+        {
+            handleJumpForgiveness = false;
+            jumpForgivenessBufferTimer = 0f;
         }
     }
 
     private void HandleCoyoteTime()
     {
-        if (isGrounded)
+        if (isGrounded && rb2d.velocity.y == 0)
         {
             coyoteTimeTimer = coyoteTime;
         }

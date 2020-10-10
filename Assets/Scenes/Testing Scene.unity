@@ -536,7 +536,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1002308249}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 68041773822ed0b4392532fafa401561, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -694,7 +694,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1635075799}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 68041773822ed0b4392532fafa401561, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
