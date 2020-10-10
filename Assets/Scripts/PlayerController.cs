@@ -86,18 +86,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        jump = value.Get<float>(); 
-
-        /*if (coyoteTimeTimer > 0f)
-        {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
-        }*/
+        jump = value.Get<float>();
     }
-
-    /*void OnJumpReleased()
-    {
-        rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration);
-    }*/
 
     private void HandleJumpForgivenessBuffer()
     {
