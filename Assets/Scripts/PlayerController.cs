@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     float coyoteTimeTimer;
 
     [Header("Ground")]
-    [SerializeField] LayerMask ground;
+    public LayerMask ground;
     bool isGrounded;
 
     //Awake
