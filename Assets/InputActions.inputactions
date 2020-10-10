@@ -19,7 +19,15 @@
                     "id": "3303702d-198a-4bd4-87b9-a696cc786ce1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "JumpReleased",
+                    "type": "Button",
+                    "id": "643a9a2e-aa94-46ab-a577-8435fcf3c8ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -119,6 +127,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8605f6ae-d497-4541-a063-b82801a21061",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10f4b52a-be9a-43e1-809b-4001f98ff86b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c479d805-e1ec-475b-b10d-b43be2d73fca",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpReleased",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
