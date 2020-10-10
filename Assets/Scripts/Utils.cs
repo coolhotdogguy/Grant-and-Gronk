@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonUtils : MonoBehaviour
+public class Utils : MonoBehaviour
 {
     public Animator animator;
     public MusicPlayer music;
-    bool changeMusic;
+
+    public string fadeOutAnimationState;
+    public string fadeInAnimationState;
 
     float fade = 0.8f;
 
@@ -21,26 +23,26 @@ public class ButtonUtils : MonoBehaviour
         Application.Quit();
     }
 
-    public void ChangeMusic()
+    IEnumerator FadeOutIn(int index)
     {
-        changeMusic = true;
+        music.LinearFadeOut(fade);
+        animator.Play(fadeOutAnimationState);
+
+        yield return new WaitForSeconds(fade);
+
+        SceneManager.LoadScene(index);
+
+        music.LinearFadeIn(fade);
+        animator.SetTrigger("FadeIn");
     }
 
     public void SwitchRoom(int index)
     {
-        SceneManager.LoadScene(index);
-        if (changeMusic)
-        {
-            music.LinearFade(fade);
-        }
+        StartCoroutine(FadeOutIn(index));
     }
 
     public void SwitchRoom(string name)
     {
-        SceneManager.LoadScene(name);
-        if (changeMusic)
-        {
-            music.LinearFade(fade);
-        }
+        StartCoroutine(FadeOutIn(SceneManager.GetSceneByName(name).buildIndex));
     }
 }

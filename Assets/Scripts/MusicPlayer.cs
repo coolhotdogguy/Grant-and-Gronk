@@ -9,13 +9,16 @@ public class MusicPlayer : MonoBehaviour
 {
     public AudioSource audioSource;
 
+    public float fadeVolumeThreshold;
+
     public AudioClip[] music;
     public AudioClip[] musicDistorted;
     public AudioClip[] ambient;
 
     float fadeDuration;
     float fadeLeft;
-    bool isFade;
+    bool isFadeOut;
+    bool isFadeIn;
 
     void Start()
     {
@@ -26,38 +29,50 @@ public class MusicPlayer : MonoBehaviour
     {
         audioSource.clip = music[0];
         audioSource.Play();
-        DontDestroyOnLoad(this);
     }
 
-    public void LinearFade(float duration)
+    public void LinearFadeOut(float duration)
     {
         fadeLeft = duration;
         fadeDuration = duration;
-        isFade = true;
+        isFadeOut = true;
+    }
+
+    public void LinearFadeIn(float duration)
+    {
+        fadeLeft = duration;
+        fadeDuration = duration;
+        isFadeIn = true;
     }
 
     private void SceneLoaded(Scene scene, LoadSceneMode scenemode)
     {
+        audioSource.Stop();
         audioSource.clip = music[scene.buildIndex];
         audioSource.Play();
     }
 
     private void Update()
     {
-        if(isFade && fadeLeft >= 0f)
+        fadeLeft -= Time.deltaTime;
+        if (isFadeOut && fadeLeft >= 0f)
         {
-            audioSource.volume = fadeLeft / fadeDuration;
+            audioSource.volume = Mathf.Clamp(fadeLeft / fadeDuration, 0f, 1f);
         }
-        else if(isFade && fadeLeft < 0f)
+        else if(isFadeIn && fadeLeft >= 0f)
+        {
+            audioSource.volume = 1 - Mathf.Clamp(fadeLeft / fadeDuration, 0f, 1f);
+        }
+
+        if(audioSource.volume <= 0f + fadeVolumeThreshold && isFadeOut)
         {
             audioSource.volume = 0f;
+            isFadeOut = false;
         }
-        if(audioSource.volume == 0f)
+        else if(audioSource.volume >= 1f - fadeVolumeThreshold && isFadeIn)
         {
-            isFade = false;
-            audioSource.Stop();
             audioSource.volume = 1f;
+            isFadeIn = false;
         }
-        fadeLeft -= Time.deltaTime;
     }
 }

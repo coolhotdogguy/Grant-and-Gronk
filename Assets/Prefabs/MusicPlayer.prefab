@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8285876117376455844}
   - component: {fileID: 8382972043471461743}
   - component: {fileID: 1997519324253147156}
+  - component: {fileID: 7354189848880636465}
   m_Layer: 0
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -141,8 +142,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8382972043471461743}
+  fadeVolumeThreshold: 0.03
   music:
   - {fileID: 8300000, guid: 98e8c5b59a38efc45984d6cc3e88cb07, type: 3}
   - {fileID: 8300000, guid: f3cf4af599096e54e804277555620e65, type: 3}
   musicDistorted: []
   ambient: []
+--- !u!114 &7354189848880636465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728106823126602266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f3f6c8cdbefdb43b51c4dff2c81e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
