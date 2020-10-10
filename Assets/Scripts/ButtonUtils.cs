@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonUtils : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    public Animator animator;
+    public MusicPlayer music;
+    bool changeMusic;
+
+    float fade = 0.8f;
 
     public void PlayAnimation(string state)
     {
@@ -17,13 +21,26 @@ public class ButtonUtils : MonoBehaviour
         Application.Quit();
     }
 
+    public void ChangeMusic()
+    {
+        changeMusic = true;
+    }
+
     public void SwitchRoom(int index)
     {
         SceneManager.LoadScene(index);
+        if (changeMusic)
+        {
+            music.LinearFade(fade);
+        }
     }
 
     public void SwitchRoom(string name)
     {
         SceneManager.LoadScene(name);
+        if (changeMusic)
+        {
+            music.LinearFade(fade);
+        }
     }
 }
