@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] float playerSpeed = 5f;
+    [SerializeField] float playerGravity = 2.5f;
 
     [Header("Jump Tuning")]
     [SerializeField] float jumpVelocity = 5f;
@@ -36,6 +37,10 @@ public class PlayerController : MonoBehaviour
         coll = GetComponent<Collider2D>();
     }
 
+    private void Start()
+    {
+        rb2d.gravityScale = playerGravity;
+    }
     private void Update()
     {
         isGrounded = coll.IsTouchingLayers(ground); 
@@ -112,6 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             coyoteTimeTimer -= Time.deltaTime;
         }
+        Debug.Log(rb2d.velocity.y);
     }
 
 }
