@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
         isJumpButtonPressed = value.isPressed;
 
-        if (!isGrounded && value.isPressed &&coyoteTimeTimer <= 0f) 
+        if (!isGrounded && value.isPressed && coyoteTimeTimer <= 0f) 
         {
             handleJumpForgiveness = true;
             jumpForgivenessBufferTimer = jumpForgivenessBuffer;
