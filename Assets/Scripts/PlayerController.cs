@@ -81,8 +81,6 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        //jump = value.Get<float>();
-
         isJumpButtonPressed = value.isPressed;
 
         if (!isGrounded && value.isPressed && coyoteTimeTimer <= 0f) 
