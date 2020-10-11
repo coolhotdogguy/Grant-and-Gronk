@@ -59,9 +59,8 @@ public class PlayerController : MonoBehaviour
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration); //slowdown jump velocity
         }
-        if ((coyoteTimeTimer > 0f && jump == 1) || (jumpForgivenessBufferTimer > 0f && isGrounded))
+        if ((coyoteTimeTimer > 0f && jump == 1) || (jumpForgivenessBufferTimer > 0f && isGrounded && isJumpButtonPressed))
         {
-            Debug.Log(0);
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
             jumpForgivenessBufferTimer = 0f;
             coyoteTimeTimer = 0f;
@@ -82,18 +81,18 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        jump = value.Get<float>();
+        //jump = value.Get<float>();
 
         isJumpButtonPressed = value.isPressed;
 
-        if (!isGrounded && value.isPressed) 
+        if (!isGrounded && value.isPressed &&coyoteTimeTimer <= 0f) 
         {
             handleJumpForgiveness = true;
             jumpForgivenessBufferTimer = jumpForgivenessBuffer;
             return;
         }
 
-        //jump = value.Get<float>();
+        jump = value.Get<float>();
     }
 
     private void HandleJumpForgivenessBuffer()
