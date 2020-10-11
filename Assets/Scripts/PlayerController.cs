@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
         if (!isJumpButtonPressed && rb2d.velocity.y > 0) //if jump is released while player is moving up
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y * jumpButtonReleaseDeceleration); //slowdown jump velocity
+            rb2d.velocity -= Vector2.up * rb2d.velocity.y * jumpButtonReleaseDeceleration; //slowdown jump velocity
         }
         if ((coyoteTimeTimer > 0f && jump == 1) || (jumpForgivenessBufferTimer > 0f && isGrounded && isJumpButtonPressed))
         {
