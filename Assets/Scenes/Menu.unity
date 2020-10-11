@@ -1780,11 +1780,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1997519324253147156, guid: fc8987cb0c7f67d4dadb381a0a6494a7,
-        type: 3}
-      propertyPath: fadeVolumeThreshold
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6728106823126602266, guid: fc8987cb0c7f67d4dadb381a0a6494a7,
         type: 3}
       propertyPath: m_Name
