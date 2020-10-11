@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        jump = value.Get<float>();
+
         isJumpButtonPressed = value.isPressed;
 
         if (!isGrounded && value.isPressed) 
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        jump = value.Get<float>();
+        //jump = value.Get<float>();
     }
 
     private void HandleJumpForgivenessBuffer()
@@ -117,7 +119,6 @@ public class PlayerController : MonoBehaviour
         {
             coyoteTimeTimer -= Time.deltaTime;
         }
-        Debug.Log(rb2d.velocity.y);
     }
 
 }
