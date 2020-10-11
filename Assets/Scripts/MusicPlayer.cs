@@ -20,6 +20,8 @@ public class MusicPlayer : MonoBehaviour
     bool isFadeOut;
     bool isFadeIn;
 
+    int lastScene = 0;
+
     void Start()
     {
         SceneManager.sceneLoaded += SceneLoaded;
@@ -47,9 +49,13 @@ public class MusicPlayer : MonoBehaviour
 
     private void SceneLoaded(Scene scene, LoadSceneMode scenemode)
     {
-        audioSource.Stop();
-        audioSource.clip = music[scene.buildIndex];
-        audioSource.Play();
+        if (lastScene != scene.buildIndex)
+        {
+            lastScene = scene.buildIndex;
+            audioSource.Stop();
+            audioSource.clip = music[scene.buildIndex];
+            audioSource.Play();
+        }
     }
 
     private void Update()
