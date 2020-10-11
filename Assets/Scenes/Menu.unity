@@ -254,7 +254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: f0fadf7cf91dcfb4d8cf861d7d2a124a, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.25
 --- !u!222 &111031702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1664,6 +1664,7 @@ GameObject:
   - component: {fileID: 1137728745}
   - component: {fileID: 1137728748}
   - component: {fileID: 1137728747}
+  - component: {fileID: 1137728749}
   - component: {fileID: 1137728746}
   m_Layer: 5
   m_Name: LeftBinder
@@ -1773,6 +1774,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137728744}
   m_CullTransparentMesh: 0
+--- !u!114 &1137728749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137728744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7e4455f49bbea46a3b81dd2079c6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 943201079}
+  control:
+    m_Name: Control
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c66c1e4a-b18e-45a9-ac30-022343a1d9d8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  index: 0
 --- !u!1001 &1142092508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2203,8 +2226,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3015,7 +3038,7 @@ GameObject:
   - component: {fileID: 2097116200}
   - component: {fileID: 2097116199}
   m_Layer: 5
-  m_Name: Bindings
+  m_Name: BindingsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
