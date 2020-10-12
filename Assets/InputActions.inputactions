@@ -585,6 +585,44 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "LevelSwitcher",
+            "id": "7714194c-4d0f-4ce8-b980-ad4fe857bf24",
+            "actions": [
+                {
+                    "name": "CycleLevel",
+                    "type": "Button",
+                    "id": "5cd94e81-d800-4110-a887-54ab92fa0db4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "094978bb-04dd-4841-ba11-7258b38013ec",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CycleLevel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "5c96e226-895e-4f6a-9895-57299e60c070",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CycleLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
         }
     ],
     "controlSchemes": [

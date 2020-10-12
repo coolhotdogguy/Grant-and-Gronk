@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
         HandleCoyoteTime();
 
         HandleJumpForgivenessBuffer();
+
+        Debug.Log(isGrounded);
     }
 
 
