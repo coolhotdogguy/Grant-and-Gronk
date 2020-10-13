@@ -1,0 +1,523 @@
+fileFormatVersion: 2
+guid: d677494e9d9b92d40b964c931fd81482
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4793066034789112148
+    second: Dungeon Ruins Tileset Day_0
+  - first:
+      213: 4251472622024928392
+    second: Dungeon Ruins Tileset Day_1
+  - first:
+      213: -5857401437833157932
+    second: Dungeon Ruins Tileset Day_2
+  - first:
+      213: -657758866174004007
+    second: Dungeon Ruins Tileset Day_3
+  - first:
+      213: 6884092082250536741
+    second: Dungeon Ruins Tileset Day_4
+  - first:
+      213: -7985734509354451984
+    second: Dungeon Ruins Tileset Day_5
+  - first:
+      213: 5042048997703213632
+    second: Dungeon Ruins Tileset Day_6
+  - first:
+      213: -4903240837284893978
+    second: Dungeon Ruins Tileset Day_7
+  - first:
+      213: 7639817260313467221
+    second: Dungeon Ruins Tileset Day_8
+  - first:
+      213: 4438458791327751403
+    second: Dungeon Ruins Tileset Day_9
+  - first:
+      213: 3596077772697670148
+    second: Dungeon Ruins Tileset Day_10
+  - first:
+      213: -7782677089504989339
+    second: Dungeon Ruins Tileset Day_11
+  - first:
+      213: -3619314717968875014
+    second: Dungeon Ruins Tileset Day_12
+  - first:
+      213: 8838033041970772721
+    second: Dungeon Ruins Tileset Day_13
+  - first:
+      213: 8826244297716862243
+    second: Dungeon Ruins Tileset Day_14
+  - first:
+      213: 5464970342910980050
+    second: Dungeon Ruins Tileset Day_15
+  - first:
+      213: -9208434432561337761
+    second: Dungeon Ruins Tileset Day_16
+  - first:
+      213: -3175155260459408222
+    second: Dungeon Ruins Tileset Day_17
+  - first:
+      213: 1486604064654531245
+    second: Dungeon Ruins Tileset Day_18
+  - first:
+      213: -3979477834024978290
+    second: Dungeon Ruins Tileset Day_19
+  - first:
+      213: -303648178908140659
+    second: Dungeon Ruins Tileset Day_20
+  - first:
+      213: 837898565288096134
+    second: Dungeon Ruins Tileset Day_21
+  - first:
+      213: 3280038257931744318
+    second: Dungeon Ruins Tileset Day_22
+  - first:
+      213: -6158949081989154687
+    second: Dungeon Ruins Tileset Day_23
+  - first:
+      213: 4927726874288846684
+    second: Dungeon Ruins Tileset Day_24
+  - first:
+      213: 2302529913224826555
+    second: Dungeon Ruins Tileset Day_25
+  - first:
+      213: 3744733749670416995
+    second: Dungeon Ruins Tileset Day_26
+  - first:
+      213: 4991399082123408638
+    second: Dungeon Ruins Tileset Day_27
+  - first:
+      213: 5733896913081565974
+    second: Dungeon Ruins Tileset Day_28
+  - first:
+      213: 6161821826362072271
+    second: Dungeon Ruins Tileset Day_29
+  - first:
+      213: 2606947933669857651
+    second: Dungeon Ruins Tileset Day_30
+  - first:
+      213: 7139334321048058182
+    second: Dungeon Ruins Tileset Day_31
+  - first:
+      213: -3288339319559140558
+    second: Dungeon Ruins Tileset Day_32
+  - first:
+      213: -7441224167982913526
+    second: Dungeon Ruins Tileset Day_33
+  - first:
+      213: 8388210470641750047
+    second: Dungeon Ruins Tileset Day_34
+  - first:
+      213: 4773799339058603634
+    second: Dungeon Ruins Tileset Day_35
+  - first:
+      213: -2374921309030218308
+    second: Dungeon Ruins Tileset Day_36
+  - first:
+      213: -8814816567553993753
+    second: Dungeon Ruins Tileset Day_37
+  - first:
+      213: -4830884787988367417
+    second: Dungeon Ruins Tileset Day_38
+  - first:
+      213: 4703663213286044826
+    second: Dungeon Ruins Tileset Day_39
+  - first:
+      213: 8383466301714778003
+    second: Dungeon Ruins Tileset Day_40
+  - first:
+      213: 2665444280797544284
+    second: Dungeon Ruins Tileset Day_41
+  - first:
+      213: -7026815628052050780
+    second: Dungeon Ruins Tileset Day_42
+  - first:
+      213: -305693409332346846
+    second: Dungeon Ruins Tileset Day_43
+  - first:
+      213: 6525009680444194180
+    second: Dungeon Ruins Tileset Day_44
+  - first:
+      213: -9130315346815217503
+    second: Dungeon Ruins Tileset Day_45
+  - first:
+      213: 1118978926240050932
+    second: Dungeon Ruins Tileset Day_46
+  - first:
+      213: -6704612659761221087
+    second: Dungeon Ruins Tileset Day_47
+  - first:
+      213: -7377009382490562622
+    second: Dungeon Ruins Tileset Day_48
+  - first:
+      213: 1181920308838071205
+    second: Dungeon Ruins Tileset Day_49
+  - first:
+      213: -7934925123547143908
+    second: Dungeon Ruins Tileset Day_50
+  - first:
+      213: -4928583750099599614
+    second: Dungeon Ruins Tileset Day_51
+  - first:
+      213: -666405345774393236
+    second: Dungeon Ruins Tileset Day_52
+  - first:
+      213: -1427564829592782789
+    second: Dungeon Ruins Tileset Day_53
+  - first:
+      213: 6818480788498425004
+    second: Dungeon Ruins Tileset Day_54
+  - first:
+      213: 4558848022879930537
+    second: Dungeon Ruins Tileset Day_55
+  - first:
+      213: -3690282141265292524
+    second: Dungeon Ruins Tileset Day_56
+  - first:
+      213: 992776592207544122
+    second: Dungeon Ruins Tileset Day_57
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_32
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 48
+        width: 128
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23b4abcafc87d52d0800000000000000
+      internalID: -3288339319559140558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_39
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 7
+        width: 73
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94bcfa75c4c64140800000000000000
+      internalID: 4703663213286044826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_40
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 46
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397ca241f2e085470800000000000000
+      internalID: 8383466301714778003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_50
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 32
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1166a324ab71e190800000000000000
+      internalID: -7934925123547143908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_52
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 34
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6822b86ed370c6f0800000000000000
+      internalID: -666405345774393236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_53
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 33
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b38f74ed955403ce0800000000000000
+      internalID: -1427564829592782789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_54
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 35
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4264ab62c10ae50800000000000000
+      internalID: 6818480788498425004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_55
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 34
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a800cc7f18444f30800000000000000
+      internalID: 4558848022879930537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_56
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 16
+        width: 30
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4131ae8c1fb79ccc0800000000000000
+      internalID: -3690282141265292524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_57
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 9
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f7ad7fc0d07cd00800000000000000
+      internalID: 992776592207544122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon Ruins Tileset Day_0
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 96
+        width: 192
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4595894f924648240800000000000000
+      internalID: 4793066034789112148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

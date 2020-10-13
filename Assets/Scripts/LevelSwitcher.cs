@@ -5,33 +5,69 @@ using UnityEngine;
 public class LevelSwitcher : MonoBehaviour
 {
 
-    bool forestLevel = true;
-    bool iceLevel;
+    bool forestBool = true;
+    bool iceBool;
+    bool dryBool;
 
-    [SerializeField] GameObject forest;
-    [SerializeField] GameObject ice;
+    [SerializeField] GameObject forestTiles;
+    [SerializeField] GameObject iceTiles;
+    [SerializeField] GameObject dryTiles;
     [SerializeField] GameObject forestBG;
     [SerializeField] GameObject iceBG;
-    [SerializeField] SpriteRenderer water;
+    [SerializeField] GameObject dryBG;
+
+    [SerializeField] GameObject forestRabbit;
+    [SerializeField] GameObject iceRabbit;
+    [SerializeField] GameObject dryRabbit;
+
+    int counter = 0;
+
+    private void Start()
+    {
+
+    }
 
     void OnCycleLevel()
     {
-        forestLevel = !forestLevel;
-        iceLevel = !iceLevel;
+        counter++;
 
-        forest.SetActive(forestLevel);
-        ice.SetActive(iceLevel);
-
-        forestBG.SetActive(forestLevel);
-        iceBG.SetActive(iceLevel);
-
-        if (forestLevel)
+        if (counter > 2)
         {
-            water.color = Color.blue;
+            counter = 0;
         }
-        else if (iceLevel)
+
+        if (counter == 0)
         {
-            water.color = Color.white;
+            forestBool = true;
+            iceBool = false;
+            dryBool = false;
         }
+        if (counter == 1)
+        {
+            iceBool = true;
+            forestBool = false;
+            dryBool = false;
+        }
+        if (counter == 2)
+        {
+            dryBool = true;
+            forestBool = false;
+            iceBool = false;
+        }
+
+
+        forestTiles.SetActive(forestBool);
+        iceTiles.SetActive(iceBool);
+        dryTiles.SetActive(dryBool);
+
+        forestBG.SetActive(forestBool);
+        iceBG.SetActive(iceBool);
+        dryBG.SetActive(dryBool);
+
+        forestRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = forestBool;
+        iceRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = iceBool;
+        dryRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = dryBool;
+
     }
+
 }

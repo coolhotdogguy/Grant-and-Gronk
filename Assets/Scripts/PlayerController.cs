@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField] float playerSpeed = 5f;
     [SerializeField] float playerGravity = 2.5f;
+    [SerializeField] int playerHealth = 3;
 
     [Header("Jump Tuning")]
     [SerializeField] float jumpVelocity = 5f;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     float move;
     bool isJumpButtonPressed;
     float jump;
+    bool bounce;
 
     private void Awake()
     {
@@ -45,17 +48,25 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = coll.IsTouchingLayers(ground); 
 
+        if(isGrounded == true)
+        {
+            bounce = false;
+        }
+
         HandleCoyoteTime();
 
         HandleJumpForgivenessBuffer();
-
-        Debug.Log(isGrounded);
     }
 
 
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movemnet
+
+        if(!isGrounded && bounce == true) //avoids jump delceration when rabbit bouncing
+        { 
+            return; 
+        }
 
         if (!isJumpButtonPressed && rb2d.velocity.y > 0) //if jump is released while player is moving up
         {
@@ -79,6 +90,14 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue value)
     {
         move = value.Get<float>(); // This will get float from action, left == -1f, right == 1f;
+        if (move > 0)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+        else if (move < 0)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
     }
 
     void OnJump(InputValue value)
@@ -93,6 +112,25 @@ public class PlayerController : MonoBehaviour
         }
 
         jump = value.Get<float>();
+    }
+
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Rabbit" && rb2d.velocity.y < 0.1f)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, collision.gameObject.GetComponent<Rabbit>().BounceVelocity());
+            bounce = true;
+        }
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Rabbit" && rb2d.velocity.y < 0.1f)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, collision.gameObject.GetComponent<Rabbit>().BounceVelocity());
+            bounce = true;
+        }
     }
 
     private void HandleJumpForgivenessBuffer()
