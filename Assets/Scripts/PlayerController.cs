@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ground")]
     public LayerMask ground;
+    public LayerMask slipperyGround;
     bool isGrounded;
 
     //Awake
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        isGrounded = coll.IsTouchingLayers(ground); 
+        isGrounded = coll.IsTouchingLayers(ground) || coll.IsTouchingLayers(slipperyGround);
 
         if(isGrounded == true)
         {
@@ -61,7 +62,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movemnet
+        if (!coll.IsTouchingLayers(slipperyGround))
+        {
+            rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
+        }
+        else if (coll.IsTouchingLayers(slipperyGround))
+        {
+            rb2d.velocity += Vector2.right * playerSpeed * move;
+            rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeed, playerSpeed), rb2d.velocity.y);
+        }
 
         if(!isGrounded && bounce == true) //avoids jump delceration when rabbit bouncing
         { 

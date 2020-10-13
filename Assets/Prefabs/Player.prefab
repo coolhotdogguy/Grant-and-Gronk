@@ -75,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 121040157
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1e0a4c3597d120444893e48f9cfb20f7, type: 3}
+  m_Sprite: {fileID: -5050664382621690000, guid: ce2fec2358365984a8a7d0659880f292,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,9 +121,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.5653069}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.38450694
 --- !u!114 &2019224217938154182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,14 +136,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb6a5c943b2aa34184254f85a46ab96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeed: 9
   playerGravity: 2.25
+  playerHealth: 2
   jumpVelocity: 15
   jumpButtonReleaseDeceleration: 0.1
   coyoteTime: 0.2
   ground:
     serializedVersion: 2
     m_Bits: 256
+  slipperyGround:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &2019224217938154183
 MonoBehaviour:
   m_ObjectHideFlags: 0
