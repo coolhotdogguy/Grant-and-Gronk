@@ -26,8 +26,6 @@ public class Rabbit : MonoBehaviour
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
-
-        //Physics.IgnoreLayerCollision(9, 10);
     }
 
     private void Update()
