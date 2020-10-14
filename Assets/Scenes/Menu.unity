@@ -1799,8 +1799,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 943201079}
-  asset: {fileID: -944628639613478452, guid: cb6b98d0f1eef2344ac619bbe07206f2, type: 3}
-  actionName: Move
+  mainAction: {fileID: -7672432216877843366, guid: cb6b98d0f1eef2344ac619bbe07206f2,
+    type: 3}
+  index: 1
 --- !u!1001 &1142092508
 PrefabInstance:
   m_ObjectHideFlags: 0
