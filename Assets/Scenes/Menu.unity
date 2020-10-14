@@ -1735,7 +1735,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1137728747}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1137728749}
+        m_TargetAssemblyTypeName: BindControlsButton, Assembly-CSharp
+        m_MethodName: Remap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: negative
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1137728747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,15 +1799,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 943201079}
-  control:
-    m_Name: Control
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: c66c1e4a-b18e-45a9-ac30-022343a1d9d8
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-  index: 0
+  asset: {fileID: -944628639613478452, guid: cb6b98d0f1eef2344ac619bbe07206f2, type: 3}
+  actionName: Move
 --- !u!1001 &1142092508
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@
             ],
             "bindings": [
                 {
-                    "name": "1D Axis",
+                    "name": "MoveAxis",
                     "id": "f515d7bf-bbe5-4b73-8fda-20ef925b673a",
                     "path": "1DAxis",
                     "interactions": "",
@@ -57,7 +57,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "1D Axis",
+                    "name": "JumpAxis",
                     "id": "6dd59ca0-a8a6-4a7c-b710-f1254ee36ac1",
                     "path": "1DAxis",
                     "interactions": "",
