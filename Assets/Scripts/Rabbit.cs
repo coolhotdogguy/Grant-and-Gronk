@@ -11,8 +11,11 @@ public class Rabbit : MonoBehaviour
     [SerializeField] float rightLimit;
     [SerializeField] float leftLimit;
     [SerializeField] LayerMask ground;
+    [SerializeField] LayerMask slipperyGround;
     [SerializeField] float bounceVelocity = 15f;
     bool facingRight;
+    bool isGrounded;
+    bool isSlipperyGrounded;
 
 
     Animator anim;
@@ -26,10 +29,15 @@ public class Rabbit : MonoBehaviour
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+
+
     }
 
     private void Update()
     {
+        isGrounded = coll.IsTouchingLayers(ground);
+        isSlipperyGrounded = coll.IsTouchingLayers(slipperyGround);
+
         if (anim.GetBool("Jumping"))
         {
             if (rb2d.velocity.y < 0.1f)
@@ -38,9 +46,12 @@ public class Rabbit : MonoBehaviour
                 anim.SetBool("Jumping", false);
             }
         }
-        if (coll.IsTouchingLayers(ground) && anim.GetBool("Falling"))
+        if (anim.GetBool("Falling"))
         {
-            anim.SetBool("Falling", false);
+            if (isGrounded || isSlipperyGrounded)
+            {
+                anim.SetBool("Falling", false);
+            }
         }
     }
 
@@ -58,7 +69,7 @@ public class Rabbit : MonoBehaviour
                     transform.localScale = new Vector2(-1, 1);
                 }
 
-                if (coll.IsTouchingLayers(ground))
+                if (isGrounded || isSlipperyGrounded)
                 {
                     rb2d.velocity = new Vector2(jumpLength, jumpHeight);
                     anim.SetBool("Jumping", true);
@@ -78,7 +89,7 @@ public class Rabbit : MonoBehaviour
                     transform.localScale = new Vector2(1, 1);
                 }
 
-                if (coll.IsTouchingLayers(ground))
+                if (isGrounded || isSlipperyGrounded)
                 {
                     rb2d.velocity = new Vector2(-jumpLength, jumpHeight);
                     anim.SetBool("Jumping", true);

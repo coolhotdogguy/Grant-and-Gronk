@@ -591,8 +591,8 @@
             "id": "7714194c-4d0f-4ce8-b980-ad4fe857bf24",
             "actions": [
                 {
-                    "name": "CycleLevel",
-                    "type": "Button",
+                    "name": "TestingInputs",
+                    "type": "Value",
                     "id": "5cd94e81-d800-4110-a887-54ab92fa0db4",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -607,7 +607,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CycleLevel",
+                    "action": "TestingInputs",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -618,7 +618,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CycleLevel",
+                    "action": "TestingInputs",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

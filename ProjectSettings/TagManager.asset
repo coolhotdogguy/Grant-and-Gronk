@@ -8,6 +8,8 @@ TagManager:
   - Ice
   - Dry
   - Rabbit
+  - Climable
+  - Bug
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,6 @@ TagManager:
   - Rabbit
   - Player
   - Slippery Ground
-  - 
   - 
   - 
   - 

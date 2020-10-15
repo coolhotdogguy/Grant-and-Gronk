@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2019224217938154179}
   - component: {fileID: 2019224217938154178}
   - component: {fileID: 2019224217938154181}
-  - component: {fileID: 2019224217938154180}
+  - component: {fileID: 6369495472976669740}
   - component: {fileID: 2019224217938154182}
+  - component: {fileID: 5372667694370730346}
   - component: {fileID: 2019224217938154183}
   m_Layer: 0
   m_Name: Player
@@ -108,8 +109,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &2019224217938154180
-CircleCollider2D:
+--- !u!70 &6369495472976669740
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5653069}
-  serializedVersion: 2
-  m_Radius: 0.38450694
+  m_Offset: {x: 0, y: -0.23961365}
+  m_Size: {x: 0.6053692, y: 1.5207727}
+  m_Direction: 0
 --- !u!114 &2019224217938154182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 9
   playerGravity: 2.25
-  playerHealth: 2
   jumpVelocity: 15
   jumpButtonReleaseDeceleration: 0.1
   coyoteTime: 0.2
@@ -148,6 +148,22 @@ MonoBehaviour:
   slipperyGround:
     serializedVersion: 2
     m_Bits: 2048
+  icePlanet: 0
+--- !u!114 &5372667694370730346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019224217938154177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04aaf4a2902424b409de978ad4fc4115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 3
+  player: {fileID: 0}
+  healthUnits: []
 --- !u!114 &2019224217938154183
 MonoBehaviour:
   m_ObjectHideFlags: 0

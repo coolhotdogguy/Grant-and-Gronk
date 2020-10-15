@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField] float playerSpeed = 5f;
     [SerializeField] float playerGravity = 2.5f;
-    [SerializeField] int playerHealth = 3;
 
     [Header("Jump Tuning")]
     [SerializeField] float jumpVelocity = 5f;
@@ -26,19 +26,28 @@ public class PlayerController : MonoBehaviour
     public LayerMask slipperyGround;
     bool isGrounded;
 
+    //Temporal Coagulate
+    int temporalCoagulateInInventory;
+    [SerializeField] TextMeshProUGUI temporalText;
+
     //Awake
     Rigidbody2D rb2d;
     Collider2D coll;
+    PlayerHealth healthScript;
 
     float move;
     bool isJumpButtonPressed;
     float jump;
     bool bounce;
-
+    bool isClimable;
+    bool enemyRepel;
+    [HideInInspector] public bool icePlanet;
+   
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        healthScript = GetComponent<PlayerHealth>();
     }
 
     private void Start()
@@ -57,22 +66,26 @@ public class PlayerController : MonoBehaviour
         HandleCoyoteTime();
 
         HandleJumpForgivenessBuffer();
+
     }
 
 
     private void FixedUpdate()
     {
-        if (!coll.IsTouchingLayers(slipperyGround))
+        if (!icePlanet)
         {
-            rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
+            if (!enemyRepel)
+            {
+                rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
+            }
         }
         else if (coll.IsTouchingLayers(slipperyGround))
         {
-            rb2d.velocity += Vector2.right * playerSpeed * move;
+            rb2d.velocity += Vector2.right * playerSpeed * move * Time.deltaTime;
             rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeed, playerSpeed), rb2d.velocity.y);
         }
 
-        if(!isGrounded && bounce == true) //avoids jump delceration when rabbit bouncing
+        if(!isGrounded && bounce == true) //avoids jump delceration when rabbit and bug bouncing
         { 
             return; 
         }
@@ -93,12 +106,12 @@ public class PlayerController : MonoBehaviour
         {
             rb2d.velocity += Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime; //-1 to offset unity's gravity
         }*/
-
     }
 
     void OnMove(InputValue value)
     {
         move = value.Get<float>(); // This will get float from action, left == -1f, right == 1f;
+
         if (move > 0)
         {
             transform.localScale = new Vector2(1, 1);
@@ -109,9 +122,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     void OnJump(InputValue value)
     {
         isJumpButtonPressed = value.isPressed;
+
+        if (isClimable)
+        {
+            jump = value.Get<float>();
+            Climb();
+        }
 
         if (!isGrounded && value.isPressed && coyoteTimeTimer <= 0f) 
         {
@@ -121,27 +141,59 @@ public class PlayerController : MonoBehaviour
         }
 
         jump = value.Get<float>();
+
+
     }
-
-
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Rabbit" && rb2d.velocity.y < 0.1f)
-        {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, collision.gameObject.GetComponent<Rabbit>().BounceVelocity());
-            bounce = true;
-        }
-    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Rabbit" && rb2d.velocity.y < 0.1f)
+        switch (collision.tag)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, collision.gameObject.GetComponent<Rabbit>().BounceVelocity());
-            bounce = true;
+            case "Rabbit":
+                if (rb2d.velocity.y < 0.1f)
+                {
+                    rb2d.velocity = new Vector2(rb2d.velocity.x, collision.gameObject.GetComponent<Rabbit>().BounceVelocity());
+                    bounce = true;
+                }
+                break;
+            case "Climable":
+                isClimable = true;
+                break;
+            case "Bug":
+                HandleBugCollision(collision);
+                break;
+            default:
+                break;
         }
     }
 
+    private void HandleBugCollision(Collider2D collision)
+    {
+        if (transform.position.x > collision.transform.position.x) //player is right of bug
+        {
+            rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
+            healthScript.playerHealth--;
+            healthScript.DamagePlayer();
+        }
+        else //player is left of bug
+        {
+            rb2d.velocity = new Vector2(-collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
+            healthScript.playerHealth--;
+            healthScript.DamagePlayer();
+        }
+        bounce = true;
+        enemyRepel = true;
+        StartCoroutine(FreezeHorizontalMovement());
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Climable")
+        {
+            isClimable = false;
+            rb2d.gravityScale = playerGravity;
+        }
+    }
     private void HandleJumpForgivenessBuffer()
     {
         if (handleJumpForgiveness)
@@ -167,4 +219,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Climb()
+    {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jump * playerSpeed);
+            rb2d.gravityScale = 0f;
+    }
+
+    IEnumerator FreezeHorizontalMovement()
+    {
+        yield return new WaitForSeconds(0.5f);
+        yield return enemyRepel = false;
+        
+    }
+
+    public void AddTemporalCoagulate()
+    {
+        temporalCoagulateInInventory++;
+        temporalText.text = temporalCoagulateInInventory.ToString();
+    }
 }

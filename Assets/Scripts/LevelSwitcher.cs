@@ -9,6 +9,8 @@ public class LevelSwitcher : MonoBehaviour
     bool iceBool;
     bool dryBool;
 
+    [SerializeField] GameObject player;
+
     [SerializeField] GameObject forestTiles;
     [SerializeField] GameObject iceTiles;
     [SerializeField] GameObject dryTiles;
@@ -21,53 +23,60 @@ public class LevelSwitcher : MonoBehaviour
     [SerializeField] GameObject dryRabbit;
 
     int counter = 0;
+    bool myBool; //temp fix for level cycler
 
-    private void Start()
+
+    void OnTestingInputs()
     {
-
-    }
-
-    void OnCycleLevel()
-    {
-        counter++;
-
-        if (counter > 2)
+        if (myBool)
         {
-            counter = 0;
+            myBool = !myBool;
         }
-
-        if (counter == 0)
+        else if (!myBool)
         {
-            forestBool = true;
-            iceBool = false;
-            dryBool = false;
+            counter++;
+
+            if (counter > 2)
+            {
+                counter = 0;
+            }
+
+            if (counter == 0) //forest
+            {
+                forestBool = true;
+                iceBool = false;
+                dryBool = false;
+            }
+            if (counter == 1) //ice
+            {
+                iceBool = true;
+                forestBool = false;
+                dryBool = false;
+            }
+            if (counter == 2) //dry
+            {
+                dryBool = true;
+                forestBool = false;
+                iceBool = false;
+            }
+
+            player.GetComponent<PlayerController>().icePlanet = iceBool;
+
+
+            forestTiles.SetActive(forestBool);
+            iceTiles.SetActive(iceBool);
+            dryTiles.SetActive(dryBool);
+
+            forestBG.SetActive(forestBool);
+            iceBG.SetActive(iceBool);
+            dryBG.SetActive(dryBool);
+
+            forestRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = forestBool;
+            iceRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = iceBool;
+            dryRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = dryBool;
+
+            myBool = !myBool;
         }
-        if (counter == 1)
-        {
-            iceBool = true;
-            forestBool = false;
-            dryBool = false;
-        }
-        if (counter == 2)
-        {
-            dryBool = true;
-            forestBool = false;
-            iceBool = false;
-        }
-
-
-        forestTiles.SetActive(forestBool);
-        iceTiles.SetActive(iceBool);
-        dryTiles.SetActive(dryBool);
-
-        forestBG.SetActive(forestBool);
-        iceBG.SetActive(iceBool);
-        dryBG.SetActive(dryBool);
-
-        forestRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = forestBool;
-        iceRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = iceBool;
-        dryRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = dryBool;
-
     }
 
 }
