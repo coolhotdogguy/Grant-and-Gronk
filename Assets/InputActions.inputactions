@@ -591,9 +591,25 @@
             "id": "7714194c-4d0f-4ce8-b980-ad4fe857bf24",
             "actions": [
                 {
-                    "name": "TestingInputs",
+                    "name": "EInput",
                     "type": "Value",
                     "id": "5cd94e81-d800-4110-a887-54ab92fa0db4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "QInput",
+                    "type": "Button",
+                    "id": "c9ad635d-1ad8-4ae3-b745-71067dc4a43a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RInput",
+                    "type": "Button",
+                    "id": "4efb98c5-8e14-4f54-92f7-64bb0ebd53d7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -607,7 +623,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TestingInputs",
+                    "action": "EInput",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -618,7 +634,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TestingInputs",
+                    "action": "EInput",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "bffd32a2-d2ff-4025-811d-d6d7ad5ed1fe",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QInput",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "8589e1ec-e109-4757-a054-0d6803a7f508",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QInput",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "c50247f2-b5a7-4055-94a8-b2b1ad1fe63c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RInput",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "1e7a162f-fc25-4c57-ad15-6b2d36a50fb8",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RInput",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
