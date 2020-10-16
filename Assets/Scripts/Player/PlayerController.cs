@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField] float playerSpeed = 5f;
     [SerializeField] float playerGravity = 2.5f;
+    [SerializeField] PlayerData playerData;
 
     [Header("Jump Tuning")]
     [SerializeField] float jumpVelocity = 5f;
@@ -26,9 +27,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask slipperyGround;
     bool isGrounded;
 
-    //Temporal Coagulate
-    int temporalCoagulateInInventory;
-    [SerializeField] TextMeshProUGUI temporalText;
+    [SerializeField] TextMeshProUGUI inventoryText;
+    int inventory;
+
 
     //Awake
     Rigidbody2D rb2d;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb2d.gravityScale = playerGravity;
+        inventory = PlayerPrefs.GetInt("Inventory");
     }
     private void Update()
     {
@@ -167,24 +169,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleBugCollision(Collider2D collision)
-    {
-        if (transform.position.x > collision.transform.position.x) //player is right of bug
-        {
-            rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            healthScript.playerHealth--;
-            healthScript.DamagePlayer();
-        }
-        else //player is left of bug
-        {
-            rb2d.velocity = new Vector2(-collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            healthScript.playerHealth--;
-            healthScript.DamagePlayer();
-        }
-        bounce = true;
-        enemyRepel = true;
-        StartCoroutine(FreezeHorizontalMovement());
-    }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -232,9 +217,33 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void AddTemporalCoagulate()
+    private void HandleBugCollision(Collider2D collision)
     {
-        temporalCoagulateInInventory++;
-        temporalText.text = temporalCoagulateInInventory.ToString();
+        if (transform.position.x > collision.transform.position.x) //player is right of bug
+        {
+            rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
+            healthScript.playerHealth--;
+            healthScript.DamagePlayer();
+        }
+        else //player is left of bug
+        {
+            rb2d.velocity = new Vector2(-collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
+            healthScript.playerHealth--;
+            healthScript.DamagePlayer();
+        }
+        bounce = true;
+        enemyRepel = true;
+        StartCoroutine(FreezeHorizontalMovement());
+    }
+
+    public void AddTemporalCoagulateData(int temporalCoagulateInInventory)
+    {
+        inventory = temporalCoagulateInInventory;
+        inventoryText.text = inventory.ToString();
+    }
+
+    public void UpdateInventory()
+    {
+        inventory = PlayerPrefs.GetInt("Inventory");
     }
 }

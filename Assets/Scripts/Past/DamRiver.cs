@@ -40,9 +40,4 @@ public class DamRiver : MonoBehaviour
         input = value.isPressed;
     }
 
-    private void Update()
-    {
-
-        Debug.Log(input);
-    }
 }
