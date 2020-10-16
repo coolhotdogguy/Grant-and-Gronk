@@ -12,7 +12,7 @@ public class DamRiver : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            text.text = "Dam River? Press E";
+            text.text = "Dam River? Need 5 Temporal Coagulate. Press E";
         }
     }
 
@@ -35,7 +35,7 @@ public class DamRiver : MonoBehaviour
         }
     }
 
-    void OnTestingInputs(InputValue value)
+    void OnEInput(InputValue value)
     {
         input = value.isPressed;
     }

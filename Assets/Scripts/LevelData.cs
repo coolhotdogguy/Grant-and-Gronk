@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class LevelData : MonoBehaviour
 {
     public List<int> collectedTemporalCoagulateIDs;
+    [SerializeField] TextMeshProUGUI inventoryText;
+    int collected;
 
-    void Awake()
+    void Start()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {
@@ -18,12 +20,16 @@ public class LevelData : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        inventoryText.text = collected.ToString();
     }
+
 
 
     public void AddCollectIDs(int i)
     {
         collectedTemporalCoagulateIDs.Add(i);
+        collected++;
+        inventoryText.text = collected.ToString();
     }
     //dont destroy unless one already exists
     //store all TC IDs in local varibale

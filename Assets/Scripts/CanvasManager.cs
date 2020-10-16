@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempCoagDontDestroy : MonoBehaviour
+public class CanvasManager : MonoBehaviour
 {
     void Start()
     {

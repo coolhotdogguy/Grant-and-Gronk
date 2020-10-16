@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField] float playerSpeed = 5f;
     [SerializeField] float playerGravity = 2.5f;
-    [SerializeField] PlayerData playerData;
 
     [Header("Jump Tuning")]
     [SerializeField] float jumpVelocity = 5f;
@@ -27,14 +26,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask slipperyGround;
     bool isGrounded;
 
-    [SerializeField] TextMeshProUGUI inventoryText;
-    int inventory;
 
-
-    //Awake
+    //Awake / Start
     Rigidbody2D rb2d;
     Collider2D coll;
-    PlayerHealth healthScript;
 
     float move;
     bool isJumpButtonPressed;
@@ -48,13 +43,19 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
-        healthScript = GetComponent<PlayerHealth>();
     }
 
     private void Start()
     {
+        if (FindObjectOfType<PlayerData>().gronkLevel)
+        {
+
+        }
+        else
+        {
+            transform.position = FindObjectOfType<PlayerData>().playerPosition; //if Grant Level, more player to previous possition
+        }
         rb2d.gravityScale = playerGravity;
-        inventory = PlayerPrefs.GetInt("Inventory");
     }
     private void Update()
     {
@@ -222,28 +223,16 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x > collision.transform.position.x) //player is right of bug
         {
             rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            healthScript.playerHealth--;
-            healthScript.DamagePlayer();
+            FindObjectOfType<PlayerData>().DamagePlayer();
         }
         else //player is left of bug
         {
             rb2d.velocity = new Vector2(-collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            healthScript.playerHealth--;
-            healthScript.DamagePlayer();
+            FindObjectOfType<PlayerData>().DamagePlayer();
         }
         bounce = true;
         enemyRepel = true;
         StartCoroutine(FreezeHorizontalMovement());
     }
 
-    public void AddTemporalCoagulateData(int temporalCoagulateInInventory)
-    {
-        inventory = temporalCoagulateInInventory;
-        inventoryText.text = inventory.ToString();
-    }
-
-    public void UpdateInventory()
-    {
-        inventory = PlayerPrefs.GetInt("Inventory");
-    }
 }
