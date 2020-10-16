@@ -12,7 +12,7 @@ public class PlayerData : MonoBehaviour
     public bool gronkLevel;
     int playerHealth = 3;
     [SerializeField] Image[] healthUnits;
-    [SerializeField] GameObject allTemporalCoagulate;
+    [SerializeField] GameObject temporalCoagulatesFolder;
     public Vector2 playerPosition;
 
     void Awake()
@@ -50,11 +50,11 @@ public class PlayerData : MonoBehaviour
     {
         if (!gronkLevel)
         {
-            allTemporalCoagulate.SetActive(true);
+            temporalCoagulatesFolder.SetActive(true);
         }
         else
         {
-            allTemporalCoagulate.SetActive(false);
+            temporalCoagulatesFolder.SetActive(false);
         }
     }
 
