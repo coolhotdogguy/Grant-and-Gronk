@@ -22,7 +22,7 @@ public class TemporalCoagulate : MonoBehaviour
     }
 
     void Update()
-    {
+    {   /*
         for (int i = 0; i < collected.Count; i++)
         {
             if (gameObject.GetInstanceID() == collected[i])
@@ -30,15 +30,18 @@ public class TemporalCoagulate : MonoBehaviour
                 Destroy(gameObject);
                 Debug.Log("Destoy?");
             }
-        }
+        } */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerData.AddToInventoy(this.gameObject);
-        FindObjectOfType<LevelData>().AddCollectIDs(gameObject.GetInstanceID());
-        //PlayerPrefs.SetInt(gameObject.GetInstanceID().ToString(), gameObject.GetInstanceID());
-        Destroy(gameObject);
+        if (collision.tag == "Player")
+        {
+            playerData.AddToInventoy(this.gameObject);
+            FindObjectOfType<LevelData>().AddCollectIDs(gameObject.GetInstanceID());
+            //PlayerPrefs.SetInt(gameObject.GetInstanceID().ToString(), gameObject.GetInstanceID());
+            Destroy(gameObject);
+        }
     }
 
 }

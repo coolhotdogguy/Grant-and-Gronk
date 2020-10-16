@@ -6,6 +6,6 @@ public class DontDestoryOnLoad : MonoBehaviour
 {
     private void Start()
     {
-        DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this);
     }
 }

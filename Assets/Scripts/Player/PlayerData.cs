@@ -12,6 +12,7 @@ public class PlayerData : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.DeleteAll();
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);

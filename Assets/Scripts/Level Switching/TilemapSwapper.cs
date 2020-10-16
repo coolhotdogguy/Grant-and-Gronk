@@ -56,7 +56,7 @@ public class TilemapSwapper : MonoBehaviour
                 currentTiles = dryTiles;
             }
         }
-        else if(value.isPressed && !stable)
+       /* else if(value.isPressed && !stable) //is unstable, randomly assign tiles
         {
             for (int i = 0; i < forestTiles.Length; i++)
             { int rand = Random.Range(0, 3);
@@ -99,17 +99,11 @@ public class TilemapSwapper : MonoBehaviour
 
                
             }
-        }
+        } */
 
 
     }
 
-    void OnEInput(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            stable = !stable;
-        }
-    }
 
 }
+

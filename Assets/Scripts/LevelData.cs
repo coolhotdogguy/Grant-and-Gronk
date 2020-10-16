@@ -5,8 +5,6 @@ using UnityEngine.PlayerLoop;
 
 public class LevelData : MonoBehaviour
 {
-    [SerializeField] List<GameObject> totalTemporalCoagulate;
-    [SerializeField] List<int> totalTemporalCoagulateIDs;
     public List<int> collectedTemporalCoagulateIDs;
 
     void Awake()
@@ -20,11 +18,6 @@ public class LevelData : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        /*
-        for (int i = 0; i < totalTemporalCoagulate.Count; i++)
-        {
-            totalTemporalCoagulateIDs[i] = totalTemporalCoagulate[i].GetInstanceID();
-        }*/
     }
 
 
