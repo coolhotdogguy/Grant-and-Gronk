@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 9
   playerGravity: 2.25
+  playerData: {fileID: 0}
   jumpVelocity: 15
   jumpButtonReleaseDeceleration: 0.1
   coyoteTime: 0.2
@@ -148,6 +149,7 @@ MonoBehaviour:
   slipperyGround:
     serializedVersion: 2
     m_Bits: 2048
+  inventoryText: {fileID: 0}
   icePlanet: 0
 --- !u!114 &5372667694370730346
 MonoBehaviour:
@@ -162,8 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 3
-  player: {fileID: 0}
-  healthUnits: []
+  healthUnits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2019224217938154183
 MonoBehaviour:
   m_ObjectHideFlags: 0

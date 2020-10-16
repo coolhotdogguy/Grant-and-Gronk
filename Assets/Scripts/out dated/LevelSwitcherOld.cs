@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class LevelSwitcher : MonoBehaviour
+public class LevelSwitcherOld : MonoBehaviour
 {
-
+    /*
     bool forestBool = true;
     bool iceBool;
     bool dryBool;
@@ -79,7 +79,7 @@ public class LevelSwitcher : MonoBehaviour
             iceRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = iceBool;
             dryRabbit.gameObject.GetComponent<SpriteRenderer>().enabled = dryBool;
         }
-    }
+    }*/
 
 
 }
