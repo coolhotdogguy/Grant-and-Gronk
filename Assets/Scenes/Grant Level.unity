@@ -1582,8 +1582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911676b8f11718b4a9ac36e7b40e4ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTemporalCoagulate: []
-  totalTemporalCoagulateIDs: 
   collectedTemporalCoagulateIDs: 
 --- !u!1 &917102098
 GameObject:
@@ -1701,7 +1699,6 @@ Transform:
   m_Father: {fileID: 2066875761}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  collectedTemporalCoagulateIDs:
 --- !u!4 &941440939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1861758731473811445, guid: 16908b0f4ca7f2a46a16d68b6051d02c,
@@ -6590,8 +6587,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1895124238}
   - component: {fileID: 1895124239}
-  - component: {fileID: 1933800149}
-  - component: {fileID: 1933800150}
   m_Layer: 0
   m_Name: Cloud_4
   m_TagString: Untagged
@@ -6615,36 +6610,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1895124239
 SpriteRenderer:
---- !u!114 &1933800150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933800148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423d8a688c7017944b2acdbfa90926af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &2005900163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2005900164}
-  m_Layer: 0
-  m_Name: Trees
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2005900164
-Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6662,7 +6627,7 @@ Transform:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6683,16 +6648,15 @@ Transform:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1427564829592782789, guid: d677494e9d9b92d40b964c931fd81482,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.125, y: 0.75}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1903490575
@@ -6826,6 +6790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1933800149}
+  - component: {fileID: 1933800150}
   m_Layer: 0
   m_Name: Temporal Coagulates
   m_TagString: Untagged
@@ -6853,6 +6818,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1933800150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933800148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423d8a688c7017944b2acdbfa90926af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2005900163
 GameObject:
   m_ObjectHideFlags: 0
@@ -6917,7 +6894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1533929361}
-  maxDistance: 5
+  maxDistance: 3
   cameraSpeed: 0
 --- !u!114 &2066875758
 MonoBehaviour:
@@ -7009,7 +6986,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066875756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.04, y: -2.48, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 928301960}
@@ -7168,11 +7145,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2019224217938154179, guid: 326890860dcf9ec47b8b5d95572ff08b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2019224217938154182, guid: 326890860dcf9ec47b8b5d95572ff08b,
         type: 3}
       propertyPath: playerHealthText
@@ -7197,7 +7169,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2066875760}
     - target: {fileID: 5372667694370730346, guid: 326890860dcf9ec47b8b5d95572ff08b,
         type: 3}
       propertyPath: healthUnits.Array.data[0]

@@ -1,0 +1,574 @@
+fileFormatVersion: 2
+guid: 850788f550fca614e89677d75a5a7f8a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5058956723631188680
+    second: Temporal Coagulate_0
+  - first:
+      213: 4325332735553139850
+    second: Temporal Coagulate_1
+  - first:
+      213: -7189036512624566509
+    second: Temporal Coagulate_2
+  - first:
+      213: 3171495393792042235
+    second: Temporal Coagulate_3
+  - first:
+      213: -1239064069621591395
+    second: Temporal Coagulate_4
+  - first:
+      213: -8189854080493465531
+    second: Temporal Coagulate_5
+  - first:
+      213: 312928560932417936
+    second: Temporal Coagulate_6
+  - first:
+      213: -2059903727331719998
+    second: Temporal Coagulate_7
+  - first:
+      213: -8238119639536546554
+    second: Temporal Coagulate_8
+  - first:
+      213: 4359612327037851710
+    second: Temporal Coagulate_9
+  - first:
+      213: 1953027329150757602
+    second: Temporal Coagulate_10
+  - first:
+      213: -4295770636961486095
+    second: Temporal Coagulate_11
+  - first:
+      213: -1834209142439946201
+    second: Temporal Coagulate_12
+  - first:
+      213: 5592277368027869608
+    second: Temporal Coagulate_13
+  - first:
+      213: -225084420438958390
+    second: Temporal Coagulate_14
+  - first:
+      213: -8460053308530182437
+    second: Temporal Coagulate_15
+  - first:
+      213: 138106184130675824
+    second: Temporal Coagulate_16
+  - first:
+      213: -7430308654535374701
+    second: Temporal Coagulate_17
+  - first:
+      213: 6369746878318802385
+    second: Temporal Coagulate_18
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Temporal Coagulate_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1748
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83593e1d9a9fac9b0800000000000000
+      internalID: -5058956723631188680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_1
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1748
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a847306d43ba60c30800000000000000
+      internalID: 4325332735553139850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_2
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1748
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f13b381696b3c90800000000000000
+      internalID: -7189036512624566509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_3
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 1748
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf423c1e14a630c20800000000000000
+      internalID: 3171495393792042235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_4
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 1748
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9251442bc5fdcee0800000000000000
+      internalID: -1239064069621591395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_5
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1748
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54057e10b1bc75e80800000000000000
+      internalID: -8189854080493465531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_6
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1434
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09173724edeb75400800000000000000
+      internalID: 312928560932417936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_7
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1434
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4c3ec4970c963e0800000000000000
+      internalID: -2059903727331719998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_8
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1434
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d4144d5d15cad80800000000000000
+      internalID: -8238119639536546554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_9
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 1434
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e38518f2054708c30800000000000000
+      internalID: 4359612327037851710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_10
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 1434
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea29ae120c8a1b10800000000000000
+      internalID: 1953027329150757602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_11
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1434
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa6b5b9d5b5264c0800000000000000
+      internalID: -4295770636961486095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_12
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1120
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 728d715c0849b86e0800000000000000
+      internalID: -1834209142439946201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_13
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1120
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1f1c613a2cb9d40800000000000000
+      internalID: 5592277368027869608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_14
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1120
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aced24389e650ecf0800000000000000
+      internalID: -225084420438958390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_15
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 1120
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd6b034d65ad79a80800000000000000
+      internalID: -8460053308530182437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_16
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 1120
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074c46eb7d6aae100800000000000000
+      internalID: 138106184130675824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_17
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1120
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39888ea65ad32e890800000000000000
+      internalID: -7430308654535374701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temporal Coagulate_18
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 806
+        width: 286
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d578579903e56850800000000000000
+      internalID: 6369746878318802385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
