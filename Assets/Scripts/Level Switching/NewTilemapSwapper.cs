@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 
-public class TilemapSwapper : MonoBehaviour
+public class NewTilemapSwapper : MonoBehaviour
 {
 
     [SerializeField] TileBase[] forestTiles;
@@ -14,29 +14,10 @@ public class TilemapSwapper : MonoBehaviour
     [HideInInspector] public TileBase[] currentTiles;
 
     Tilemap currentTileMap;
-    public int counter;
-    public bool stable = true;
+    int counter;
+    bool stable = true;
     int upcomingPlanetType;
     int previousPlanetType;
-
-    void Start()
-    {
-
-        currentTileMap = GetComponent<Tilemap>();
-
-        FindObjectOfType<PlayerData>().GetAllTileBaseArrays(forestTiles, 0);
-        FindObjectOfType<PlayerData>().GetAllTileBaseArrays(iceTiles, 1);
-        FindObjectOfType<PlayerData>().GetAllTileBaseArrays(dryTiles, 2);
-
-        previousPlanetType = FindObjectOfType<PlayerData>().GetPreviousPlanetType();
-        upcomingPlanetType = FindObjectOfType<PlayerData>().GetUpcomingPlanetType();
-        Debug.Log(upcomingPlanetType);
-
-        currentTiles = FindObjectOfType<PlayerData>().currentTiles;
-
-        RefreshTiles();
-
-    }
 
     void OnQInput(InputValue value)
     {
@@ -118,7 +99,10 @@ public class TilemapSwapper : MonoBehaviour
 
     }
 
-
+    public void SetUpcomingPlanet(int planetType)
+    {
+        upcomingPlanetType = planetType;
+    }
 
     public void RefreshTiles()
     {
@@ -126,6 +110,7 @@ public class TilemapSwapper : MonoBehaviour
         {
             if (upcomingPlanetType == 0)//forest
             {
+                previousPlanetType = upcomingPlanetType;
                 for (int i = 0; i < 9; i++)
                 {
                     currentTileMap.SwapTile(forestTiles[i], forestTiles[i]);
@@ -133,6 +118,7 @@ public class TilemapSwapper : MonoBehaviour
             }
             else if (upcomingPlanetType == 1)//ice
             {
+                previousPlanetType = upcomingPlanetType;
                 for (int i = 0; i < 9; i++)
                 {
                     currentTileMap.SwapTile(currentTiles[i], iceTiles[i]);
@@ -140,6 +126,7 @@ public class TilemapSwapper : MonoBehaviour
             }
             else if (upcomingPlanetType == 2)//dry
             {
+                previousPlanetType = upcomingPlanetType;
                 FindObjectOfType<LevelObjectsEnabler>().SetDryPlanet();
                 for (int i = 0; i < 9; i++)
                 {
@@ -147,8 +134,6 @@ public class TilemapSwapper : MonoBehaviour
                 }
             }
         }
-
-        FindObjectOfType<PlayerData>().SetPreviousPlanetType(upcomingPlanetType);
     }
 }
 

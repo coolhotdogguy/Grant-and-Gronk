@@ -1544,7 +1544,12 @@ MonoBehaviour:
   - {fileID: 1770677389}
   temporalCoagulatesFolder: {fileID: 1933800148}
   playerPosition: {x: 0, y: 0}
-  currentPlanetType: 0
+  upcomingPlanetType: 0
+  previousPlanetType: 0
+  currentTiles: []
+  forestTiles: []
+  iceTiles: []
+  dryTiles: []
 --- !u!114 &845156530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,6 +2334,7 @@ GameObject:
   - component: {fileID: 1570284916}
   - component: {fileID: 1570284918}
   - component: {fileID: 1570284917}
+  - component: {fileID: 1570284922}
   - component: {fileID: 1570284920}
   - component: {fileID: 1570284919}
   - component: {fileID: 1570284921}
@@ -6371,7 +6377,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570284915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6833ffbc88c2da049978498401229919, type: 3}
   m_Name: 
@@ -6406,9 +6412,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c98bfc7cff7e863429f50efd304ad1e3, type: 2}
   - {fileID: 11400000, guid: a416fc9b7a302a24fac7ea236c17da14, type: 2}
   - {fileID: 11400000, guid: 3d1e1e797225da649b3200e5e8e0b56b, type: 2}
+  currentTiles: []
   counter: 0
   stable: 1
-  currentPlanet: 0
 --- !u!19719996 &1570284921
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -6425,6 +6431,51 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1570284922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570284915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72993f3df752c541a26e5e95bbfded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forestTiles:
+  - {fileID: 11400000, guid: 10860fe771be59942852f9450112dd44, type: 2}
+  - {fileID: 11400000, guid: c51f3ebe665b3ff48a931f48b3d5640b, type: 2}
+  - {fileID: 11400000, guid: e054f652c8bf39e48a565782df05ae43, type: 2}
+  - {fileID: 11400000, guid: 86028b25da946c647b8ad6fb67a8d566, type: 2}
+  - {fileID: 11400000, guid: b3a8a05d0efee0442b6f059354d23685, type: 2}
+  - {fileID: 11400000, guid: 64965d6a2d2bb504281428dd9e506dad, type: 2}
+  - {fileID: 11400000, guid: 93a918305698e494c8616881b560605b, type: 2}
+  - {fileID: 11400000, guid: 5dbacf8ee3dc0ea4abe336b7f59303e2, type: 2}
+  - {fileID: 11400000, guid: 6af8c80ee4736644eb967ee25eaf63fe, type: 2}
+  iceTiles:
+  - {fileID: 11400000, guid: c48b86b9b36567048b6047eaad0ea277, type: 2}
+  - {fileID: 11400000, guid: b4642c8a776bb9c4fbcf24c7748ffc0e, type: 2}
+  - {fileID: 11400000, guid: 6a69362b9f2257d4e8a0bc46786abcf5, type: 2}
+  - {fileID: 11400000, guid: fd9b0084ec8d6ce419782bb1644b814e, type: 2}
+  - {fileID: 11400000, guid: a0a0be38645f59a46b29265ee0156828, type: 2}
+  - {fileID: 11400000, guid: 705724cfde7330b4a8b5ef3750f4ad8d, type: 2}
+  - {fileID: 11400000, guid: 788f62d268875c8419c1bee6029288e9, type: 2}
+  - {fileID: 11400000, guid: 8569c3b61a7aead41bb6a88cc36a4643, type: 2}
+  - {fileID: 11400000, guid: 979076724f2cdb74e896d1930bfef132, type: 2}
+  dryTiles:
+  - {fileID: 11400000, guid: 662d346f4047d2e47b1833429129cc02, type: 2}
+  - {fileID: 11400000, guid: fc4a1b2535e3e3a4d81d0d7d77c1779a, type: 2}
+  - {fileID: 11400000, guid: fefaa13bfd1fa3c429719c18cf639756, type: 2}
+  - {fileID: 11400000, guid: bc67bf32fee2bd54dac9b76af2e4b19a, type: 2}
+  - {fileID: 11400000, guid: 273a0eadfa2f6e64d8de3a17729c78da, type: 2}
+  - {fileID: 11400000, guid: b67dc2c6fa382fe4db9ab238e1eb2fd6, type: 2}
+  - {fileID: 11400000, guid: c98bfc7cff7e863429f50efd304ad1e3, type: 2}
+  - {fileID: 11400000, guid: a416fc9b7a302a24fac7ea236c17da14, type: 2}
+  - {fileID: 11400000, guid: 3d1e1e797225da649b3200e5e8e0b56b, type: 2}
+  currentTiles: []
+  counter: 0
+  stable: 1
 --- !u!1 &1646710613
 GameObject:
   m_ObjectHideFlags: 0
@@ -6435,6 +6486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1646710615}
   - component: {fileID: 1646710614}
+  - component: {fileID: 1646710616}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -6469,6 +6521,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646710616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646710613}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e0d9844683d4546948b22f2e289dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1661364399
 PrefabInstance:
   m_ObjectHideFlags: 0

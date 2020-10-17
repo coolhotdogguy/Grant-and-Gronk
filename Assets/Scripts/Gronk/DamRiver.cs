@@ -13,7 +13,7 @@ public class DamRiver : MonoBehaviour
         if (collision.tag == "Player")
         {
             text.text = "Dam River? Need 5 Temporal Coagulate. Press E";
-            FindObjectOfType<PlayerData>().SetPlanetType(2);
+            FindObjectOfType<PlayerData>().SetUpcomingPlanetType(2);
         }
     }
 

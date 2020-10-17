@@ -15,7 +15,12 @@ public class PlayerData : MonoBehaviour
     [SerializeField] Image[] healthUnits;
     [SerializeField] GameObject temporalCoagulatesFolder;
     public Vector2 playerPosition;
-    public int currentPlanetType;
+    public int upcomingPlanetType;
+    public int previousPlanetType;
+    [HideInInspector] public TileBase[] currentTiles;
+    [HideInInspector] public TileBase[] forestTiles;
+    [HideInInspector] public TileBase[] iceTiles;
+    [HideInInspector] public TileBase[] dryTiles;
 
     void Start()
     {
@@ -107,14 +112,51 @@ public class PlayerData : MonoBehaviour
         playerPosition = position;
     }
 
-    public void SetPlanetType(int i)
+    public void SetUpcomingPlanetType(int planetType)
     {
-        currentPlanetType = i;
+        upcomingPlanetType = planetType;
     }
 
-    public int SendCurrentPlanetType()
+    public int GetUpcomingPlanetType()
     {
-        return currentPlanetType;
+        return upcomingPlanetType;
+    }
+
+
+    public void SetPreviousPlanetType(int planetType)
+    {
+        previousPlanetType = planetType;
+    }
+
+    public int GetPreviousPlanetType()
+    {
+        return previousPlanetType;
+    }
+
+    public void SetCurrentTileBase(TileBase[] tileBaseArray)
+    {
+        currentTiles = tileBaseArray;
+    }
+
+    public TileBase[] SendCurrentTiles()
+    {
+        return currentTiles;
+    }
+
+    public void GetAllTileBaseArrays(TileBase[] tileBaseArray, int id)
+    {
+        if (id == 0)
+        {
+            forestTiles = tileBaseArray;
+        }
+        if (id == 1)
+        {
+            iceTiles = tileBaseArray;
+        }
+        if (id == 2)
+        {
+            dryTiles = tileBaseArray;
+        }
     }
         
 
@@ -122,6 +164,7 @@ public class PlayerData : MonoBehaviour
     {
         if (!gronkLevel) //Load Gronk Level
         {
+            currentTiles = FindObjectOfType<TilemapSwapper>().currentTiles;
             playerPosition = FindObjectOfType<PlayerController>().transform.position;
             SceneManager.LoadScene("Gronk Level");
 
