@@ -14,13 +14,18 @@ public class TilemapSwapper : MonoBehaviour
     TileBase[] currentTiles;
 
     Tilemap currentTileMap;
-    int counter;
+    public int counter;
     public bool stable = true;
+    [SerializeField] int currentPlanet;
 
     void  Start()
     {
         currentTileMap = GetComponent<Tilemap>();
         currentTiles = forestTiles;
+
+        currentPlanet = FindObjectOfType<PlayerData>().SendCurrentPlanetType();
+        RefreshCurrentTiles();
+        RefreshTiles();
     }
 
 
@@ -103,7 +108,53 @@ public class TilemapSwapper : MonoBehaviour
 
 
     }
+    
 
 
+    public void RefreshTiles()
+    {
+
+        if (currentPlanet == 0)//forest
+        {
+            if (currentTiles == forestTiles) { return; }
+            for (int i = 0; i < currentTiles.Length; i++)
+            {
+                currentTileMap.SwapTile(currentTiles[i], forestTiles[i]);
+            }
+        }
+        else if (currentPlanet == 1)//ice
+        {
+            if (currentTiles == iceTiles) { return; }
+            for (int i = 0; i < currentTiles.Length; i++)
+            {
+                currentTileMap.SwapTile(currentTiles[i], iceTiles[i]);
+            }
+        }
+        else if (currentPlanet == 2)//dry
+        {
+            //if (currentTiles == dryTiles) { return; }
+            FindObjectOfType<LevelObjectsEnabler>().SetDryPlanet();
+            for (int i = 0; i < currentTiles.Length; i++)
+            {
+                currentTileMap.SwapTile(forestTiles[i], dryTiles[i]);
+            }
+        }
+    }
+
+    private void RefreshCurrentTiles()
+    {
+        if (currentPlanet == 0)
+        {
+            currentTiles = forestTiles;
+        }
+        if (currentPlanet == 1)
+        {
+            currentTiles = iceTiles;
+        }
+        if (currentPlanet == 2)
+        {
+            currentTiles = dryTiles;
+        }
+    }
 }
 

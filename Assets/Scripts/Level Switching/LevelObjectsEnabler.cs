@@ -66,4 +66,13 @@ public class LevelObjectsEnabler : MonoBehaviour
             }
         }
     }
+
+    public void SetDryPlanet()
+    {
+        for (int i = 0; i < dryObjects.Length; i++)
+        {
+            dryObjects[i].SetActive(true);
+            forestObjects[i].SetActive(false);
+        }
+    }
 }

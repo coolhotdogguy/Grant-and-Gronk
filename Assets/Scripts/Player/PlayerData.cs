@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 public class PlayerData : MonoBehaviour
 {
     public int temporalCoagulateInventory;
-    PlayerController player;
     public bool gronkLevel;
     int playerHealth = 3;
     [SerializeField] Image[] healthUnits;
     [SerializeField] GameObject temporalCoagulatesFolder;
     public Vector2 playerPosition;
+    public int currentPlanetType;
 
-    void Awake()
+    void Start()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {
@@ -27,18 +29,6 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        PlayerController playerController = (PlayerController)FindObjectOfType(typeof(PlayerController));
-        if(playerController)
-        {
-            player = playerController;
-        }
-        else
-        {
-            Debug.Log("No player found");
-        }
-    }
 
     private void Update()
     {
@@ -105,8 +95,6 @@ public class PlayerData : MonoBehaviour
         PlayerPrefs.SetInt(instanceID.ToString(), 1); //returns 1 when called
         PlayerPrefs.SetInt("Inventory", temporalCoagulateInventory);
         */
-
-        //player.AddTemporalCoagulateData(temporalCoagulateInventory);
     }
 
     public void DamagePlayer()
@@ -118,6 +106,17 @@ public class PlayerData : MonoBehaviour
     {
         playerPosition = position;
     }
+
+    public void SetPlanetType(int i)
+    {
+        currentPlanetType = i;
+    }
+
+    public int SendCurrentPlanetType()
+    {
+        return currentPlanetType;
+    }
+        
 
     void OnRInput(InputValue value)
     {
@@ -135,17 +134,4 @@ public class PlayerData : MonoBehaviour
         gronkLevel = !gronkLevel;
     }
 
-    void OnQInput(InputValue value)
-    {
-
-        PlayerController playerController = (PlayerController)FindObjectOfType(typeof(PlayerController));
-        if (playerController)
-        {
-            player = playerController;
-        }
-        else
-        {
-            Debug.Log("No player found");
-        }
-    }
 }
