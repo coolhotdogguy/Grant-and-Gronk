@@ -77,9 +77,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!icePlanet && !enemyRepel)
+        if (!icePlanet)
         {
-            rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
+            if (coll.sharedMaterial != NoDrag) coll.sharedMaterial = NoDrag;
+            if(!enemyRepel) rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
         }
         else if (icePlanet && move != 0)
         {
