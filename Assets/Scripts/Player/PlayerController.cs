@@ -77,11 +77,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((!icePlanet && !enemyRepel) || (int)rb2d.velocity.y != 0)
+        if (!icePlanet && !enemyRepel)
         {
             rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
         }
-        else if (coll.IsTouchingLayers(slipperyGround) && move != 0)
+        else if (icePlanet && move != 0)
         {
             rb2d.velocity += Vector2.right * playerSpeed * move * Time.deltaTime * playerSpeedIceMultiplier;
             rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeed, playerSpeed), rb2d.velocity.y);
