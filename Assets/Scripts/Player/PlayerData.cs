@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
     public int temporalCoagulateInventory;
     PlayerController player;
-    bool gronkLevel;
+    public bool gronkLevel;
+    int playerHealth = 3;
+    [SerializeField] Image[] healthUnits;
+    [SerializeField] GameObject temporalCoagulatesFolder;
+    public Vector2 playerPosition;
 
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
@@ -36,7 +40,61 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        HandleHealthUI();
+        HandleTemporalCoagulateVisibility();
+    }
 
+    private void HandleTemporalCoagulateVisibility()
+    {
+        if (!gronkLevel)
+        {
+            temporalCoagulatesFolder.SetActive(true);
+        }
+        else
+        {
+            temporalCoagulatesFolder.SetActive(false);
+        }
+    }
+
+    private void HandleHealthUI()
+    {
+        if (!gronkLevel)
+        {
+
+            if (playerHealth == 3)
+            {
+                healthUnits[0].enabled = true;
+                healthUnits[1].enabled = true;
+                healthUnits[2].enabled = true;
+            }
+            if (playerHealth == 2)
+            {
+                healthUnits[0].enabled = true;
+                healthUnits[1].enabled = true;
+                healthUnits[2].enabled = false;
+            }
+            if (playerHealth == 1)
+            {
+                healthUnits[0].enabled = true;
+                healthUnits[1].enabled = false;
+                healthUnits[2].enabled = false;
+            }
+            if (playerHealth <= 0)
+            {
+                healthUnits[0].enabled = false;
+                healthUnits[1].enabled = false;
+                healthUnits[2].enabled = false;
+            }
+        }
+        else
+        {
+            healthUnits[0].enabled = false;
+            healthUnits[1].enabled = false;
+            healthUnits[2].enabled = false;
+        }
+    }
 
     public void AddToInventoy(GameObject temporalCoagulate)
     {
@@ -51,13 +109,25 @@ public class PlayerData : MonoBehaviour
         //player.AddTemporalCoagulateData(temporalCoagulateInventory);
     }
 
+    public void DamagePlayer()
+    {
+        playerHealth--;
+    }
+
+    public void GetGrantPosition(Vector2 position)
+    {
+        playerPosition = position;
+    }
+
     void OnRInput(InputValue value)
     {
-        if (!gronkLevel)
+        if (!gronkLevel) //Load Gronk Level
         {
+            playerPosition = FindObjectOfType<PlayerController>().transform.position;
             SceneManager.LoadScene("Gronk Level");
+
         }
-        if (gronkLevel)
+        if (gronkLevel)  //Load Grant Level
         {
             SceneManager.LoadScene("Grant Level");
         }
@@ -72,7 +142,6 @@ public class PlayerData : MonoBehaviour
         if (playerController)
         {
             player = playerController;
-            player.UpdateInventory();
         }
         else
         {
