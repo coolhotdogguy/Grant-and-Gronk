@@ -15,6 +15,8 @@ public class MusicPlayer : MonoBehaviour
     public AudioClip[] musicDistorted;
     public AudioClip[] ambient;
 
+    public float volume = 1f;
+
     float fadeDuration;
     float fadeLeft;
     bool isFadeOut;
@@ -60,14 +62,19 @@ public class MusicPlayer : MonoBehaviour
 
     private void Update()
     {
+        if(!isFadeIn && !isFadeOut)
+        {
+            audioSource.volume = volume;
+        }
+
         fadeLeft -= Time.deltaTime;
         if (isFadeOut && fadeLeft >= 0f)
         {
-            audioSource.volume = Mathf.Clamp(fadeLeft / fadeDuration, 0f, 1f);
+            audioSource.volume = Mathf.Lerp(0f, volume, Mathf.Clamp(fadeLeft / fadeDuration, 0f, 1f));
         }
         else if(isFadeIn && fadeLeft >= 0f)
         {
-            audioSource.volume = 1 - Mathf.Clamp(fadeLeft / fadeDuration, 0f, 1f);
+            audioSource.volume = Mathf.Lerp(0f, volume, 1 - Mathf.Clamp(fadeLeft / fadeDuration, 0f, 1f));
         }
 
         if(audioSource.volume <= 0f + fadeVolumeThreshold && isFadeOut)
@@ -75,9 +82,9 @@ public class MusicPlayer : MonoBehaviour
             audioSource.volume = 0f;
             isFadeOut = false;
         }
-        else if(audioSource.volume >= 1f - fadeVolumeThreshold && isFadeIn)
+        else if(audioSource.volume >= volume - fadeVolumeThreshold && isFadeIn)
         {
-            audioSource.volume = 1f;
+            audioSource.volume = volume;
             isFadeIn = false;
         }
     }

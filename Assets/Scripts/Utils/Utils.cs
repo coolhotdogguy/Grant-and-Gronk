@@ -45,4 +45,9 @@ public class Utils : MonoBehaviour
     {
         StartCoroutine(FadeOutIn(SceneManager.GetSceneByName(name).buildIndex));
     }
+
+    public void ChangeVolume(float volume)
+    {
+        music.volume = volume;
+    }
 }

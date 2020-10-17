@@ -168,15 +168,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 5
   jumpLength: 3
-  rightLimit: 16
-  leftLimit: 14
+  rightLimit: 13
+  leftLimit: 10.5
   ground:
     serializedVersion: 2
     m_Bits: 256
   slipperyGround:
     serializedVersion: 2
     m_Bits: 2048
-  bounceVelocity: 18
+  bounceVelocity: 20
 --- !u!61 &7973099209193516224
 BoxCollider2D:
   m_ObjectHideFlags: 0
