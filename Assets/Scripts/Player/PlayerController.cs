@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     bool handleJumpForgiveness;
     [SerializeField] float coyoteTime = 0.2f; //extra time to jump once platform is left
     float coyoteTimeTimer; //counts down when player leaves a ledge
-    // [SerializeField] float fallMultiplier = 2.5f; was used for faster fall after peak of jump
 
     [Header("Ground")]
     public LayerMask ground;
@@ -74,9 +73,7 @@ public class PlayerController : MonoBehaviour
         HandleCoyoteTime();
 
         HandleJumpForgivenessBuffer();
-
     }
-
 
     private void FixedUpdate()
     {
@@ -90,7 +87,7 @@ public class PlayerController : MonoBehaviour
             rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeed, playerSpeed), rb2d.velocity.y);
         }
 
-        if(icePlanet &&move != 0)
+        if(icePlanet && move != 0)
         {
             coll.sharedMaterial = NoDrag;
         }
@@ -115,11 +112,6 @@ public class PlayerController : MonoBehaviour
             coyoteTimeTimer = 0f;
             jump = 0;
         }
-
-        /*if (rb2d.velocity.y < 0) //if falling, fall even faster
-        {
-            rb2d.velocity += Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime; //-1 to offset unity's gravity
-        }*/
     }
 
     void OnMove(InputValue value)
@@ -155,8 +147,6 @@ public class PlayerController : MonoBehaviour
         }
 
         jump = value.Get<float>();
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -218,8 +208,8 @@ public class PlayerController : MonoBehaviour
 
     private void Climb()
     {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jump * playerSpeed);
-            rb2d.gravityScale = 0f;
+        rb2d.velocity = new Vector2(rb2d.velocity.x, jump * playerSpeed);
+        rb2d.gravityScale = 0f;
     }
 
     IEnumerator FreezeHorizontalMovement()
