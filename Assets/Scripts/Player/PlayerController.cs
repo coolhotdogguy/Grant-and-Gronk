@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] float playerSpeed = 5f;
+    [SerializeField] float playerSpeedIceMultiplier = 10f;
     [SerializeField] float playerGravity = 2.5f;
 
     [Header("Jump Tuning")]
@@ -25,6 +26,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask ground;
     public LayerMask slipperyGround;
     bool isGrounded;
+
+    [Header("Physics Materials")]
+    [SerializeField] PhysicsMaterial2D NoDrag;
+    [SerializeField] PhysicsMaterial2D IcyDrag;
 
 
     //Awake / Start
@@ -75,17 +80,23 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!icePlanet)
+        if ((!icePlanet && !enemyRepel) || (int)rb2d.velocity.y != 0)
         {
-            if (!enemyRepel)
-            {
-                rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
-            }
+            rb2d.velocity = new Vector2(playerSpeed * move, rb2d.velocity.y); //Horizontal movement
         }
-        else if (coll.IsTouchingLayers(slipperyGround))
+        else if (coll.IsTouchingLayers(slipperyGround) && move != 0)
         {
-            rb2d.velocity += Vector2.right * playerSpeed * move * Time.deltaTime;
+            rb2d.velocity += Vector2.right * playerSpeed * move * Time.deltaTime * playerSpeedIceMultiplier;
             rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeed, playerSpeed), rb2d.velocity.y);
+        }
+
+        if(icePlanet &&move != 0)
+        {
+            coll.sharedMaterial = NoDrag;
+        }
+        else if(icePlanet && move == 0)
+        {
+            coll.sharedMaterial = IcyDrag;
         }
 
         if(!isGrounded && bounce == true) //avoids jump delceration when rabbit and bug bouncing

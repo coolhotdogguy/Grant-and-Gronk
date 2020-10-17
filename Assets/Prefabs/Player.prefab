@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 9
+  playerSpeedIceMultiplier: 10
   playerGravity: 2.25
   jumpVelocity: 15
   jumpButtonReleaseDeceleration: 0.1
@@ -147,6 +148,8 @@ MonoBehaviour:
   slipperyGround:
     serializedVersion: 2
     m_Bits: 2048
+  NoDrag: {fileID: 6200000, guid: 68041773822ed0b4392532fafa401561, type: 2}
+  IcyDrag: {fileID: 6200000, guid: 9153e64be50c8814f9bee7a029fe9141, type: 2}
   icePlanet: 0
 --- !u!114 &2019224217938154183
 MonoBehaviour:
