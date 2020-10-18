@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 
-public class NewTilemapSwapper : MonoBehaviour
+public class TilemapSwapper : MonoBehaviour
 {
 
     [SerializeField] TileBase[] forestTiles;
@@ -14,10 +14,18 @@ public class NewTilemapSwapper : MonoBehaviour
     [HideInInspector] public TileBase[] currentTiles;
 
     Tilemap currentTileMap;
-    int counter;
-    bool stable = true;
+    public int counter;
+    public bool stable = true;
     int upcomingPlanetType;
     int previousPlanetType;
+
+    void Start()
+    {
+
+        currentTileMap = GetComponent<Tilemap>();
+        RefreshTiles();
+
+    }
 
     void OnQInput(InputValue value)
     {
@@ -99,10 +107,7 @@ public class NewTilemapSwapper : MonoBehaviour
 
     }
 
-    public void SetUpcomingPlanet(int planetType)
-    {
-        upcomingPlanetType = planetType;
-    }
+
 
     public void RefreshTiles()
     {
@@ -110,7 +115,6 @@ public class NewTilemapSwapper : MonoBehaviour
         {
             if (upcomingPlanetType == 0)//forest
             {
-                previousPlanetType = upcomingPlanetType;
                 for (int i = 0; i < 9; i++)
                 {
                     currentTileMap.SwapTile(forestTiles[i], forestTiles[i]);
@@ -118,7 +122,6 @@ public class NewTilemapSwapper : MonoBehaviour
             }
             else if (upcomingPlanetType == 1)//ice
             {
-                previousPlanetType = upcomingPlanetType;
                 for (int i = 0; i < 9; i++)
                 {
                     currentTileMap.SwapTile(currentTiles[i], iceTiles[i]);
@@ -126,14 +129,14 @@ public class NewTilemapSwapper : MonoBehaviour
             }
             else if (upcomingPlanetType == 2)//dry
             {
-                previousPlanetType = upcomingPlanetType;
-                FindObjectOfType<LevelObjectsEnabler>().SetDryPlanet();
+                //FindObjectOfType<LevelObjectsEnabler>().SetDryPlanet();
                 for (int i = 0; i < 9; i++)
                 {
                     currentTileMap.SwapTile(currentTiles[i], dryTiles[i]);
                 }
             }
         }
+
     }
 }
 

@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     bool bounce;
     bool isClimable;
     bool enemyRepel;
-    [HideInInspector] public bool icePlanet;
+    bool icePlanet;
    
     private void Awake()
     {
@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
             transform.position = FindObjectOfType<PlayerData>().playerPosition; //if Grant Level, more player to previous possition
         }
         rb2d.gravityScale = playerGravity;
+        icePlanet = FindObjectOfType<TilemapSwapper2>().icePlanet;
+        Debug.Log(icePlanet);
     }
     private void Update()
     {

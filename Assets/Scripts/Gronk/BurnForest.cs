@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
-public class DamRiver : MonoBehaviour
+public class BurnForest : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI text;
     bool input;
@@ -12,7 +12,7 @@ public class DamRiver : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            text.text = "Dam River? Need 5 Temporal Coagulate. Press E";
+            text.text = "Burn Forest? Need 5 Temporal Coagulate. Press E";
         }
     }
 
@@ -22,7 +22,7 @@ public class DamRiver : MonoBehaviour
         {
             if (input)
             {
-                FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(2);
+                FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
             }
         }
     }
@@ -39,5 +39,4 @@ public class DamRiver : MonoBehaviour
     {
         input = value.isPressed;
     }
-
 }

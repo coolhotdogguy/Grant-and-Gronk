@@ -15,12 +15,8 @@ public class PlayerData : MonoBehaviour
     [SerializeField] Image[] healthUnits;
     [SerializeField] GameObject temporalCoagulatesFolder;
     public Vector2 playerPosition;
-    public int upcomingPlanetType;
-    public int previousPlanetType;
-    [HideInInspector] public TileBase[] currentTiles;
-    [HideInInspector] public TileBase[] forestTiles;
-    [HideInInspector] public TileBase[] iceTiles;
-    [HideInInspector] public TileBase[] dryTiles;
+    [SerializeField] GameObject groundGameObject;
+    GameObject levelObjectsGameObject;
 
     void Start()
     {
@@ -31,7 +27,9 @@ public class PlayerData : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
-        }
+        };
+
+        levelObjectsGameObject = FindObjectOfType<LevelObjects>().gameObject;
     }
 
 
@@ -112,66 +110,25 @@ public class PlayerData : MonoBehaviour
         playerPosition = position;
     }
 
-    public void SetUpcomingPlanetType(int planetType)
-    {
-        upcomingPlanetType = planetType;
-    }
-
-    public int GetUpcomingPlanetType()
-    {
-        return upcomingPlanetType;
-    }
-
-
-    public void SetPreviousPlanetType(int planetType)
-    {
-        previousPlanetType = planetType;
-    }
-
-    public int GetPreviousPlanetType()
-    {
-        return previousPlanetType;
-    }
-
-    public void SetCurrentTileBase(TileBase[] tileBaseArray)
-    {
-        currentTiles = tileBaseArray;
-    }
-
-    public TileBase[] SendCurrentTiles()
-    {
-        return currentTiles;
-    }
-
-    public void GetAllTileBaseArrays(TileBase[] tileBaseArray, int id)
-    {
-        if (id == 0)
-        {
-            forestTiles = tileBaseArray;
-        }
-        if (id == 1)
-        {
-            iceTiles = tileBaseArray;
-        }
-        if (id == 2)
-        {
-            dryTiles = tileBaseArray;
-        }
-    }
-        
-
     void OnRInput(InputValue value)
     {
         if (!gronkLevel) //Load Gronk Level
         {
-            currentTiles = FindObjectOfType<TilemapSwapper>().currentTiles;
-            playerPosition = FindObjectOfType<PlayerController>().transform.position;
+            playerPosition = FindObjectOfType<PlayerController>().transform.position; //store grant position
+            groundGameObject.GetComponent<TilemapRenderer>().enabled = false;
+            groundGameObject.GetComponent<TilemapCollider2D>().enabled = false;
+            levelObjectsGameObject.SetActive(false);
+
             SceneManager.LoadScene("Gronk Level");
 
         }
         if (gronkLevel)  //Load Grant Level
         {
             SceneManager.LoadScene("Grant Level");
+            groundGameObject.GetComponent<TilemapRenderer>().enabled = true;
+            groundGameObject.GetComponent<TilemapCollider2D>().enabled = true;
+            levelObjectsGameObject.SetActive(true);
+            groundGameObject.GetComponent<TilemapSwapper2>().UpdateTilesAndObjects();
         }
 
         gronkLevel = !gronkLevel;
