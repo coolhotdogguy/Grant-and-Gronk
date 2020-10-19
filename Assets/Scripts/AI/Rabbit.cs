@@ -58,11 +58,6 @@ public class Rabbit : MonoBehaviour
                 anim.SetBool("Falling", false);
             }
         }
-
-        if (this.gameObject.name == "Forest Rabbit")
-        {
-            Debug.Log(rb2d.velocity);
-        }
     }
 
 

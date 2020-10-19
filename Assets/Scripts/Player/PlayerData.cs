@@ -5,16 +5,17 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-using UnityEngine.WSA;
+using TMPro;
 
 public class PlayerData : MonoBehaviour
 {
-    public int temporalCoagulateInventory;
+    public int collectedTemporalCoagulateInt;
     public bool gronkLevel;
     int playerHealth = 3;
     [SerializeField] Image[] healthUnits;
+    [SerializeField] TextMeshProUGUI inventoryText;
     [SerializeField] GameObject temporalCoagulatesFolder;
-    public Vector2 playerPosition;
+    [HideInInspector] public Vector2 playerPosition;
     [SerializeField] GameObject groundGameObject;
     GameObject levelObjectsGameObject;
 
@@ -30,13 +31,6 @@ public class PlayerData : MonoBehaviour
         };
 
         levelObjectsGameObject = FindObjectOfType<LevelObjects>().gameObject;
-    }
-
-
-    private void Update()
-    {
-        HandleHealthUI();
-        HandleTemporalCoagulateVisibility();
     }
 
     private void HandleTemporalCoagulateVisibility()
@@ -89,20 +83,16 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    public void AddToInventoy(GameObject temporalCoagulate)
+    public void AddToInventoy()
     {
-        int instanceID = temporalCoagulate.gameObject.GetInstanceID();
-
-        temporalCoagulateInventory++;
-        /*
-        PlayerPrefs.SetInt(instanceID.ToString(), 1); //returns 1 when called
-        PlayerPrefs.SetInt("Inventory", temporalCoagulateInventory);
-        */
+        collectedTemporalCoagulateInt++;
+        inventoryText.text = collectedTemporalCoagulateInt.ToString();
     }
 
     public void DamagePlayer()
     {
         playerHealth--;
+        HandleHealthUI();
         if (playerHealth <= 0)
         {
             OnDeath();
@@ -111,7 +101,21 @@ public class PlayerData : MonoBehaviour
 
     void OnDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);           
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        TemporalCoagulate[] collectedTemporalCoagulate = FindObjectsOfType<TemporalCoagulate>();
+        for (int i = 0; i < collectedTemporalCoagulate.Length; i++)
+        {
+            collectedTemporalCoagulate[i].gameObject.SetActive(true);
+        }
+
+        collectedTemporalCoagulateInt = 0;
+        inventoryText.text = collectedTemporalCoagulateInt.ToString();
+
+        playerHealth = 3;
+        HandleHealthUI();
+
+        playerPosition = Vector2.zero;
     }
 
     public void GetGrantPosition(Vector2 position)
@@ -123,24 +127,36 @@ public class PlayerData : MonoBehaviour
     {
         if (!gronkLevel) //Load Gronk Level
         {
-            playerPosition = FindObjectOfType<PlayerController>().transform.position; //store grant position
-            groundGameObject.GetComponent<TilemapRenderer>().enabled = false;
-            groundGameObject.GetComponent<TilemapCollider2D>().enabled = false;
-            levelObjectsGameObject.SetActive(false);
-
-            SceneManager.LoadScene("Gronk Level");
+            LoadGronkLevel();
 
         }
         if (gronkLevel)  //Load Grant Level
         {
-            SceneManager.LoadScene("Grant Level");
-            groundGameObject.GetComponent<TilemapRenderer>().enabled = true;
-            groundGameObject.GetComponent<TilemapCollider2D>().enabled = true;
-            levelObjectsGameObject.SetActive(true);
-            groundGameObject.GetComponent<TilemapSwapper2>().UpdateTilesAndObjects();
+            LoadGrantLevel();
         }
 
         gronkLevel = !gronkLevel;
+
+        HandleHealthUI();
+        HandleTemporalCoagulateVisibility();
     }
 
+    private void LoadGrantLevel()
+    {
+        SceneManager.LoadScene("Grant Level");
+        groundGameObject.GetComponent<TilemapRenderer>().enabled = true;
+        groundGameObject.GetComponent<TilemapCollider2D>().enabled = true;
+        levelObjectsGameObject.SetActive(true);
+        groundGameObject.GetComponent<TilemapSwapper2>().UpdateTilesAndObjects();
+    }
+
+    private void LoadGronkLevel()
+    {
+        playerPosition = FindObjectOfType<PlayerController>().transform.position; //store grant position
+        groundGameObject.GetComponent<TilemapRenderer>().enabled = false;
+        groundGameObject.GetComponent<TilemapCollider2D>().enabled = false;
+        levelObjectsGameObject.SetActive(false);
+
+        SceneManager.LoadScene("Gronk Level");
+    }
 }

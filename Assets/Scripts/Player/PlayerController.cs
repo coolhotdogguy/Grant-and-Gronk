@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     //Awake / Start
     Rigidbody2D rb2d;
     Collider2D coll;
+    Animator anim;
 
     float move;
     bool isJumpButtonPressed;
@@ -42,25 +43,31 @@ public class PlayerController : MonoBehaviour
     bool isClimable;
     bool enemyRepel;
     bool icePlanet;
+
+    enum AnimationState { idle, running, jumping, falling}
+    AnimationState state = AnimationState.idle;
+
    
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
+        rb2d.gravityScale = playerGravity;
+        icePlanet = FindObjectOfType<TilemapSwapper2>().icePlanet;
+
         if (FindObjectOfType<PlayerData>().gronkLevel)
         {
-
+            icePlanet = false;
         }
         else
         {
             transform.position = FindObjectOfType<PlayerData>().playerPosition; //if Grant Level, more player to previous possition
         }
-        rb2d.gravityScale = playerGravity;
-        icePlanet = FindObjectOfType<TilemapSwapper2>().icePlanet;      
     }
     private void Update()
     {
@@ -74,6 +81,9 @@ public class PlayerController : MonoBehaviour
         HandleCoyoteTime();
 
         HandleJumpForgivenessBuffer();
+
+        HandleAnimationState();
+        anim.SetInteger("Animation State", (int)state);
     }
 
     private void FixedUpdate()
@@ -113,6 +123,7 @@ public class PlayerController : MonoBehaviour
             jumpForgivenessBufferTimer = 0f;
             coyoteTimeTimer = 0f;
             jump = 0;
+            state = AnimationState.jumping;
         }
     }
 
@@ -183,6 +194,46 @@ public class PlayerController : MonoBehaviour
             rb2d.gravityScale = playerGravity;
         }
     }
+
+    void HandleAnimationState()
+    {
+            if (state == AnimationState.jumping && !bounce)
+            {
+                if (rb2d.velocity.y < 0.2f)
+                {
+                    state = AnimationState.falling;
+                }
+            }
+            else if (state == AnimationState.jumping && bounce)
+            {
+                if (rb2d.velocity.y < 0.2f)
+                {
+                    state = AnimationState.falling;
+                    bounce = false;
+                }
+            }
+            else if (state == AnimationState.falling)
+            {
+                if (coll.IsTouchingLayers(ground) || coll.IsTouchingLayers(slipperyGround))
+                {
+                    state = AnimationState.idle;
+                }
+                else if (bounce)
+                {
+                    state = AnimationState.jumping;
+                }
+            }
+            else if (Mathf.Abs(rb2d.velocity.x) > 2f)
+            {
+                state = AnimationState.running;
+            }
+            else if ((coll.IsTouchingLayers(ground) || coll.IsTouchingLayers(slipperyGround)))
+            {
+                state = AnimationState.idle;
+            }  
+        
+    }
+
     private void HandleJumpForgivenessBuffer()
     {
         if (handleJumpForgiveness)
@@ -214,28 +265,35 @@ public class PlayerController : MonoBehaviour
         rb2d.gravityScale = 0f;
     }
 
-    IEnumerator FreezeHorizontalMovement()
-    {
-        yield return new WaitForSeconds(0.5f);
-        yield return enemyRepel = false;
-        
-    }
 
     private void HandleBugCollision(Collider2D collision)
     {
         if (transform.position.x > collision.transform.position.x) //player is right of bug
         {
             rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            FindObjectOfType<PlayerData>().DamagePlayer();
+            if (!enemyRepel)
+            {
+                FindObjectOfType<PlayerData>().DamagePlayer();
+            }
         }
         else //player is left of bug
         {
             rb2d.velocity = new Vector2(-collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            FindObjectOfType<PlayerData>().DamagePlayer();
+            if (!enemyRepel)
+            {
+                FindObjectOfType<PlayerData>().DamagePlayer();
+            }
         }
         bounce = true;
         enemyRepel = true;
         StartCoroutine(FreezeHorizontalMovement());
+    }
+
+    IEnumerator FreezeHorizontalMovement()
+    {
+        yield return new WaitForSeconds(0.5f);
+        yield return enemyRepel = false;
+
     }
 
 }

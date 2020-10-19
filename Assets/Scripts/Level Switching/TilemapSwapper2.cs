@@ -14,6 +14,7 @@ public class TilemapSwapper2 : MonoBehaviour
 
     int previousPlanetType;
     int upcomingPlanetType;
+    [HideInInspector] public int currentPlanetType; //used for BGs
 
     [HideInInspector] public bool icePlanet;
 
@@ -46,6 +47,7 @@ public class TilemapSwapper2 : MonoBehaviour
                         }
                     }
                     levelObjects.SetForestPlanet();
+                    icePlanet = false;
                     break;
 
                 case 1:
@@ -83,6 +85,7 @@ public class TilemapSwapper2 : MonoBehaviour
                         }
                     }
                     levelObjects.SetDryPlanet();
+                    icePlanet = false;
                     break;
 
                 default:
@@ -96,6 +99,6 @@ public class TilemapSwapper2 : MonoBehaviour
     public void SetPlanetTypeInt(int upcomingType)
     {
         upcomingPlanetType = upcomingType;
+        currentPlanetType = upcomingType; //used for camera BGs
     }
-
 }
