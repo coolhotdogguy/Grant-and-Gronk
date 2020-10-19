@@ -13,7 +13,7 @@ public class Rabbit : MonoBehaviour
     [SerializeField] LayerMask ground;
     [SerializeField] LayerMask slipperyGround;
     [SerializeField] float bounceVelocity = 15f;
-    bool facingRight;
+    [SerializeField] bool facingRight;
     bool isGrounded;
     bool isSlipperyGrounded;
 
@@ -30,7 +30,12 @@ public class Rabbit : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
 
+        var player = FindObjectOfType<PlayerController>();
 
+        if (player.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(player.gameObject.GetComponent<CapsuleCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>());
+        }
     }
 
     private void Update()
@@ -52,6 +57,11 @@ public class Rabbit : MonoBehaviour
             {
                 anim.SetBool("Falling", false);
             }
+        }
+
+        if (this.gameObject.name == "Forest Rabbit")
+        {
+            Debug.Log(rb2d.velocity);
         }
     }
 
@@ -106,4 +116,5 @@ public class Rabbit : MonoBehaviour
     {
         return bounceVelocity;
     }
+
 }

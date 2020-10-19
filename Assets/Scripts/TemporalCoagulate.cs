@@ -40,8 +40,14 @@ public class TemporalCoagulate : MonoBehaviour
             playerData.AddToInventoy(this.gameObject);
             FindObjectOfType<LevelData>().AddCollectIDs(gameObject.GetInstanceID());
             //PlayerPrefs.SetInt(gameObject.GetInstanceID().ToString(), gameObject.GetInstanceID());
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
+    }
+
+    public void EnableTemporalCoagulate()
+    {
+        this.gameObject.SetActive(true);
     }
 
 }

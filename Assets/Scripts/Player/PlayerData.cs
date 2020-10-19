@@ -103,6 +103,15 @@ public class PlayerData : MonoBehaviour
     public void DamagePlayer()
     {
         playerHealth--;
+        if (playerHealth <= 0)
+        {
+            OnDeath();
+        }
+    }
+
+    void OnDeath()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);           
     }
 
     public void GetGrantPosition(Vector2 position)
