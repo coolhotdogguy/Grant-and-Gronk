@@ -467,7 +467,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304901370}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -607,7 +607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36cf875721fca349bdc0f9bb472e3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 304901372}
+  promptText: {fileID: 304901372}
+  requiredTemporalCoagulate: 5
+  icePlanet: 0
 --- !u!61 &343372438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -848,7 +850,7 @@ Transform:
   m_LocalScale: {x: 2.7, y: 54.44, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -1.336, y: -1.873, z: 54.512}
 --- !u!58 &486285916
 CircleCollider2D:
@@ -878,7 +880,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4c00153aa865442b5c42a35ca6ab8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 304901372}
+  promptText: {fileID: 304901372}
+  requiredTemporalCoagulate: 5
+  dryPlanet: 0
 --- !u!114 &486285918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3016,7 +3020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1533929361}
   maxDistance: 0
-  cameraSpeed: 0
 --- !u!1 &821306916
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,7 +3298,7 @@ Transform:
   m_LocalScale: {x: -0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1533929361 stripped
 GameObject:
@@ -3345,7 +3348,7 @@ Transform:
   m_Children:
   - {fileID: 1180243072}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2025400606
 GameObject:
@@ -3366,7 +3369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2025400607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4203,7 +4206,7 @@ GameObject:
   - component: {fileID: 2113465100}
   - component: {fileID: 2113465099}
   m_Layer: 5
-  m_Name: Text_Canvas
+  m_Name: Prompt Text Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4282,7 +4285,7 @@ RectTransform:
   m_Children:
   - {fileID: 304901371}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -18,6 +18,8 @@ public class PlayerData : MonoBehaviour
     [HideInInspector] public Vector2 playerPosition;
     [SerializeField] GameObject groundGameObject;
     GameObject levelObjectsGameObject;
+    [HideInInspector] public bool icePlanet; //these two are used to track planet type to allow TC refund in Gronk Level
+    [HideInInspector] public bool dryPlanet;
 
     void Start()
     {
@@ -83,10 +85,24 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    public void AddToInventoy()
+    public void AddToInventoy(int i)
     {
-        collectedTemporalCoagulateInt++;
+        collectedTemporalCoagulateInt += i;
         inventoryText.text = collectedTemporalCoagulateInt.ToString();
+    }
+
+    public void SubtractFromInventroy(int reqTempCoag, int planetType)
+    {
+        collectedTemporalCoagulateInt -= reqTempCoag;
+        inventoryText.text = collectedTemporalCoagulateInt.ToString();
+        if (planetType == 1)
+        {
+            icePlanet = true;
+        }
+        if (planetType == 2)
+        {
+            dryPlanet = true;
+        }
     }
 
     public void DamagePlayer()
@@ -95,20 +111,21 @@ public class PlayerData : MonoBehaviour
         HandleHealthUI();
         if (playerHealth <= 0)
         {
-            OnDeath();
+            StartCoroutine(HandleDyingCoroutine());
         }
+    }
+
+    IEnumerator HandleDyingCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        OnDeath();
     }
 
     void OnDeath()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        TemporalCoagulate[] collectedTemporalCoagulate = FindObjectsOfType<TemporalCoagulate>();
-        for (int i = 0; i < collectedTemporalCoagulate.Length; i++)
-        {
-            collectedTemporalCoagulate[i].gameObject.SetActive(true);
-        }
-
+        FindObjectOfType<TempCoagManager>().EnableAllTemporalCoagulate();
         collectedTemporalCoagulateInt = 0;
         inventoryText.text = collectedTemporalCoagulateInt.ToString();
 
@@ -117,6 +134,7 @@ public class PlayerData : MonoBehaviour
 
         playerPosition = Vector2.zero;
     }
+
 
     public void GetGrantPosition(Vector2 position)
     {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField] float playerSpeed = 5f;
     [SerializeField] float playerSpeedIceMultiplier = 10f;
+    [SerializeField] float playerSpeedOnIce = 7f;
     [SerializeField] float playerGravity = 2.5f;
 
     [Header("Jump Tuning")]
@@ -44,8 +46,9 @@ public class PlayerController : MonoBehaviour
     bool enemyRepel;
     bool icePlanet;
 
-    enum AnimationState { idle, running, jumping, falling}
-    AnimationState state = AnimationState.idle;
+    //Animation FInite State Machine
+    [HideInInspector] public enum AnimationState { idle, running, jumping, falling}
+    [HideInInspector] public AnimationState state = AnimationState.idle;
 
    
     private void Awake()
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
             transform.position = FindObjectOfType<PlayerData>().playerPosition; //if Grant Level, more player to previous possition
         }
     }
+
     private void Update()
     {
         isGrounded = coll.IsTouchingLayers(ground) || coll.IsTouchingLayers(slipperyGround);
@@ -95,8 +99,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (icePlanet && move != 0)
         {
-            rb2d.velocity += Vector2.right * playerSpeed * move * Time.deltaTime * playerSpeedIceMultiplier;
-            rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeed, playerSpeed), rb2d.velocity.y);
+            rb2d.velocity += Vector2.right * playerSpeedOnIce * move * Time.deltaTime * playerSpeedIceMultiplier;
+            rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeedOnIce, playerSpeedOnIce), rb2d.velocity.y);
         }
 
         if(icePlanet && move != 0)

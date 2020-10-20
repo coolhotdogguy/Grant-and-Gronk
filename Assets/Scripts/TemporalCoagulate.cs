@@ -10,7 +10,7 @@ public class TemporalCoagulate : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            FindObjectOfType<PlayerData>().AddToInventoy();
+            FindObjectOfType<PlayerData>().AddToInventoy(1);
             this.gameObject.SetActive(false);
         }
     }

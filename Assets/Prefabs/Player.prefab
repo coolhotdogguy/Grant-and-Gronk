@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 6369495472976669740}
   - component: {fileID: 2019224217938154182}
   - component: {fileID: 2019224217938154183}
+  - component: {fileID: 1533929362}
+  - component: {fileID: 1533929363}
+  - component: {fileID: 1533929364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,7 +153,7 @@ MonoBehaviour:
     m_Bits: 2048
   NoDrag: {fileID: 6200000, guid: 68041773822ed0b4392532fafa401561, type: 2}
   IcyDrag: {fileID: 6200000, guid: 9153e64be50c8814f9bee7a029fe9141, type: 2}
-  icePlanet: 0
+  state: 0
 --- !u!114 &2019224217938154183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,3 +237,46 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &1533929362
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019224217938154177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6621bd8dc19859240856c5e54b9796a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1533929363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019224217938154177}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77172bb54f3d6d44b62e659c671d387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1533929364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019224217938154177}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f09c78bbe167da40945b22f18b97832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

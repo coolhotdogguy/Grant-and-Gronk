@@ -10,6 +10,7 @@ public class LevelReset : MonoBehaviour
         if (collision.tag == "Player")
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            FindObjectOfType<PlayerData>().DamagePlayer();
         }
     }
 }

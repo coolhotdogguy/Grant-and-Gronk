@@ -10,7 +10,7 @@ public class LevelObjects : MonoBehaviour
 
     [SerializeField] GameObject groundTileMap;
 
-    int counter;
+    BoxCollider2D levelResetCollider;
 
     private void Start()
     {
@@ -22,6 +22,8 @@ public class LevelObjects : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+
+        levelResetCollider = GetComponent<BoxCollider2D>();
     }
     public void SetForestPlanet()
     {
@@ -32,6 +34,7 @@ public class LevelObjects : MonoBehaviour
             forestObjects[i].SetActive(true);
             iceObjects[i].SetActive(false);
         }
+        levelResetCollider.offset = new Vector2(60f, -30);
     }
     public void SetIcePlanet()
     {
@@ -52,5 +55,7 @@ public class LevelObjects : MonoBehaviour
             forestObjects[i].SetActive(false);
             iceObjects[i].SetActive(false);
         }
+        levelResetCollider.offset = new Vector2(60f, -37);
+
     }
 }

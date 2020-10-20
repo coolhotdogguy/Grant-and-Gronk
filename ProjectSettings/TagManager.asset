@@ -10,6 +10,7 @@ TagManager:
   - Rabbit
   - Climable
   - Bug
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

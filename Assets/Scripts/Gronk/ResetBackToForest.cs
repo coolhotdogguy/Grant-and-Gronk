@@ -23,6 +23,8 @@ public class ResetBackToForest : MonoBehaviour
         {
             if (input)
             {
+                FindObjectOfType<DamRiver>().dryPlanet = false;
+                FindObjectOfType<BurnForest>().icePlanet = false;
                 FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(0);
             }
         }
