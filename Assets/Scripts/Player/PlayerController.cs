@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -60,7 +59,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb2d.gravityScale = playerGravity;
-        icePlanet = FindObjectOfType<TilemapSwapper2>().icePlanet;
 
         if (FindObjectOfType<PlayerData>().gronkLevel)
         {

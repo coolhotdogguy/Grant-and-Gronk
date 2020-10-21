@@ -203,9 +203,6 @@ public class PlayerData : MonoBehaviour
             {
                 SwitchToDryPlanet();
             }
-
-            Debug.Log(counter);
-            Debug.Log(icePlanetUnlocked);
         }
 
     } //cycle planetTypes
