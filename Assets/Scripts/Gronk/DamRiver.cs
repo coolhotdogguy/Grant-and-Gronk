@@ -49,17 +49,20 @@ public class DamRiver : MonoBehaviour
                         changeBack = true;
                         dryPlanet = false;
                     }
-                    else if (!dryPlanet && collectTC >= requiredTemporalCoagulate && !setPlanetBoolOnExit) //change planet type
+                    else if (!dryPlanet)
                     {
-                        FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(2);
-                        FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 2);
-                        setPlanetBoolOnExit = true;
-                        promptText.text = "River has been dammed";
-
-                    }
-                    else if (!dryPlanet && collectTC < requiredTemporalCoagulate)
-                    {
-                        promptText.text = "Not Enough Temporal Coagulate to Alter Time. Needed " + (requiredTemporalCoagulate - collectTC).ToString();
+                        if (collectTC >= requiredTemporalCoagulate && !setPlanetBoolOnExit) //change planet type
+                        {
+                            FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(2);
+                            FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 2);
+                            setPlanetBoolOnExit = true;
+                            promptText.text = "River has been dammed";
+                            FindObjectOfType<PlayerData>().dryPlanetUnlocked = true;
+                        }
+                        if (collectTC < requiredTemporalCoagulate)
+                        {
+                            promptText.text = "Not Enough Temporal Coagulate to Alter Time. Needed " + (requiredTemporalCoagulate - collectTC).ToString();
+                        }
                     }
                 }
             }

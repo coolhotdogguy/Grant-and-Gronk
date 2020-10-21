@@ -9,9 +9,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player")]
-    [SerializeField] float playerSpeed = 5f;
+    [SerializeField] float playerSpeed = 9f;
     [SerializeField] float playerSpeedIceMultiplier = 10f;
-    [SerializeField] float playerSpeedOnIce = 7f;
     [SerializeField] float playerGravity = 2.5f;
 
     [Header("Jump Tuning")]
@@ -44,7 +43,7 @@ public class PlayerController : MonoBehaviour
     bool bounce;
     bool isClimable;
     bool enemyRepel;
-    bool icePlanet;
+    [HideInInspector] public bool icePlanet;
 
     //Animation FInite State Machine
     [HideInInspector] public enum AnimationState { idle, running, jumping, falling}
@@ -99,8 +98,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (icePlanet && move != 0)
         {
-            rb2d.velocity += Vector2.right * playerSpeedOnIce * move * Time.deltaTime * playerSpeedIceMultiplier;
-            rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeedOnIce, playerSpeedOnIce), rb2d.velocity.y);
+            rb2d.velocity += Vector2.right * playerSpeed * move * Time.deltaTime * playerSpeedIceMultiplier;
+            rb2d.velocity = new Vector2(Mathf.Clamp(rb2d.velocity.x, -playerSpeed, playerSpeed), rb2d.velocity.y);
         }
 
         if(icePlanet && move != 0)
@@ -171,7 +170,7 @@ public class PlayerController : MonoBehaviour
         switch (collision.tag)
         {
             case "Rabbit":
-                if (rb2d.velocity.y < 0.1f)
+                if (rb2d.velocity.y < 0f)
                 {
                     rb2d.velocity = new Vector2(rb2d.velocity.x, collision.gameObject.GetComponent<Rabbit>().BounceVelocity());
                     bounce = true;

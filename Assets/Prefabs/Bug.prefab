@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  yTopLimit: 4.19
-  yBottomLimit: -2.78
-  bounceBackHorizontal: 5
+  yTopLimit: 0
+  yBottomLimit: 0
+  bounceBackHorizontal: 10
   bounceBackVertical: 15
 --- !u!70 &6531832618806347939
 CapsuleCollider2D:

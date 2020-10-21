@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class TilemapSwapper : MonoBehaviour
 {
-
+/*
     [SerializeField] TileBase[] forestTiles;
     [SerializeField] TileBase[] iceTiles;
     [SerializeField] TileBase[] dryTiles;
@@ -59,7 +59,7 @@ public class TilemapSwapper : MonoBehaviour
                 currentTiles = dryTiles;
             }
         }
-        /* else if(value.isPressed && !stable) //is unstable, randomly assign tiles
+        else if(value.isPressed && !stable) //is unstable, randomly assign tiles
          {
              for (int i = 0; i < forestTiles.Length; i++)
              { int rand = Random.Range(0, 3);
@@ -102,7 +102,7 @@ public class TilemapSwapper : MonoBehaviour
 
 
              }
-         } */
+         }
 
 
     }
@@ -138,6 +138,7 @@ public class TilemapSwapper : MonoBehaviour
         }
 
     }
+*/
 }
 
 

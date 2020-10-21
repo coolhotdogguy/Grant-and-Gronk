@@ -6,9 +6,24 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.PlayerLoop;
 
 public class PlayerData : MonoBehaviour
 {
+
+
+
+    //CHEAT, delete
+    void OnXInput(InputValue value)
+    {
+        collectedTemporalCoagulateInt += 5;
+        inventoryText.text = collectedTemporalCoagulateInt.ToString();
+    }
+
+
+
+
+
     public int collectedTemporalCoagulateInt;
     public bool gronkLevel;
     int playerHealth = 3;
@@ -20,6 +35,7 @@ public class PlayerData : MonoBehaviour
     GameObject levelObjectsGameObject;
     [HideInInspector] public bool icePlanet; //these two are used to track planet type to allow TC refund in Gronk Level
     [HideInInspector] public bool dryPlanet;
+    [SerializeField] TilemapSwapper2 tileSwapper;
 
     void Start()
     {
@@ -157,6 +173,66 @@ public class PlayerData : MonoBehaviour
 
         HandleHealthUI();
         HandleTemporalCoagulateVisibility();
+    }
+
+
+    int counter;
+    [HideInInspector] public bool icePlanetUnlocked;
+    [HideInInspector] public bool dryPlanetUnlocked;
+    void OnQInput(InputValue value)
+    {
+
+        if (value.isPressed)
+        {
+            counter++;
+            if (!icePlanetUnlocked) { counter = 0; }
+            if (!dryPlanetUnlocked && counter == 2) { counter = 0; }
+            if (counter > 2)
+            {
+                counter = 0;
+            }
+            if (counter == 0)
+            {
+                SwitchToForestPlanet();
+            }
+            if (counter == 1 && icePlanetUnlocked == true)
+            {
+                SwitchToIcePlanet();
+            }
+            if (counter == 2 && dryPlanetUnlocked == true)
+            {
+                SwitchToDryPlanet();
+            }
+
+            Debug.Log(counter);
+            Debug.Log(icePlanetUnlocked);
+        }
+
+    } //cycle planetTypes
+
+
+    public void SwitchToDryPlanet()
+    {
+        tileSwapper.SetPlanetTypeInt(2);
+        tileSwapper.UpdateTilesAndObjects();
+        FindObjectOfType<RabbitManager>().HandleRabbitVisibility(2);
+        FindObjectOfType<PlayerController>().icePlanet = false;
+    }
+
+    public void SwitchToIcePlanet()
+    {
+        tileSwapper.SetPlanetTypeInt(1);
+        tileSwapper.UpdateTilesAndObjects();
+        FindObjectOfType<RabbitManager>().HandleRabbitVisibility(1);
+        FindObjectOfType<PlayerController>().icePlanet = true;
+    }
+
+    public void SwitchToForestPlanet()
+    {
+        tileSwapper.SetPlanetTypeInt(0);
+        tileSwapper.UpdateTilesAndObjects();
+        FindObjectOfType<RabbitManager>().HandleRabbitVisibility(0);
+        FindObjectOfType<PlayerController>().icePlanet = false;
     }
 
     private void LoadGrantLevel()

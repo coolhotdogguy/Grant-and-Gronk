@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 304901372}
-  requiredTemporalCoagulate: 5
+  requiredTemporalCoagulate: 10
   icePlanet: 0
 --- !u!61 &343372438
 BoxCollider2D:
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 304901372}
-  requiredTemporalCoagulate: 5
+  requiredTemporalCoagulate: 16
   dryPlanet: 0
 --- !u!114 &486285918
 MonoBehaviour:

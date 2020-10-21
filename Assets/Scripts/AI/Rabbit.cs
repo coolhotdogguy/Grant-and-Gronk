@@ -30,12 +30,7 @@ public class Rabbit : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
 
-        var player = FindObjectOfType<PlayerController>();
-
-        if (player.gameObject.tag == "Player")
-        {
-            Physics2D.IgnoreCollision(player.gameObject.GetComponent<CapsuleCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>());
-        }
+        Physics2D.IgnoreCollision(FindObjectOfType<PlayerController>().gameObject.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<BoxCollider2D>());
     }
 
     private void Update()
@@ -60,7 +55,13 @@ public class Rabbit : MonoBehaviour
         }
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<BoxCollider2D>());
+        }
+    }
 
     private void Move()
     {

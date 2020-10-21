@@ -55,7 +55,7 @@ public class MusicPlayer : MonoBehaviour
         {
             lastScene = scene.buildIndex;
             audioSource.Stop();
-            audioSource.clip = music[scene.buildIndex];
+            //audioSource.clip = music[scene.buildIndex];
             audioSource.Play();
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Waterfall : MonoBehaviour
@@ -11,7 +10,7 @@ public class Waterfall : MonoBehaviour
         if (collision.tag == "Player")
         {
             collision.GetComponent<PlayerController>().state = PlayerController.AnimationState.falling;
-            collision.GetComponent<Collider2D>().enabled = false;
+            //  collision.GetComponent<Collider2D>().enabled = false;
             collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -fallSpeed);
             StartCoroutine(EnablePlayerColliderCoroutine(collision.GetComponent<Collider2D>()));
         }

@@ -55,6 +55,7 @@ public class BurnForest : MonoBehaviour
                         FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 1);
                         setPlanetBoolOnExit = true;
                         promptText.text = "The forest is burnt";
+                        FindObjectOfType<PlayerData>().icePlanetUnlocked = true;
                     }
                     else if (!icePlanet && collectTC < requiredTemporalCoagulate)
                     {

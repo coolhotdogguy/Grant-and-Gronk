@@ -5,7 +5,7 @@ using UnityEngine;
 public class TempCoagManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject[] tempCoags;
+    [SerializeField] List<GameObject> tempCoags;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class TempCoagManager : MonoBehaviour
 
     public void EnableAllTemporalCoagulate()
     {
-        for (int i = 0; i < tempCoags.Length; i++)
+        for (int i = 0; i < tempCoags.Count; i++)
         {
             tempCoags[i].SetActive(true);
         }

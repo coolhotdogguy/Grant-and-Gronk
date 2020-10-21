@@ -7,11 +7,6 @@ public class DrawPath : MonoBehaviour
     GameObject[] checkpoints;
     private void FixedUpdate()
     {
-
-    }
-
-    private void OnDrawGizmos()
-    {
         checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
         if (checkpoints.Length > 1)
         {

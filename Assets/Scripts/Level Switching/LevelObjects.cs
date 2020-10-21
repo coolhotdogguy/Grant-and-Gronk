@@ -34,7 +34,7 @@ public class LevelObjects : MonoBehaviour
             forestObjects[i].SetActive(true);
             iceObjects[i].SetActive(false);
         }
-        levelResetCollider.offset = new Vector2(60f, -30);
+        levelResetCollider.offset = new Vector2(45f, -30);
     }
     public void SetIcePlanet()
     {
@@ -55,7 +55,7 @@ public class LevelObjects : MonoBehaviour
             forestObjects[i].SetActive(false);
             iceObjects[i].SetActive(false);
         }
-        levelResetCollider.offset = new Vector2(60f, -37);
+        levelResetCollider.offset = new Vector2(45f, -40);
 
     }
 }

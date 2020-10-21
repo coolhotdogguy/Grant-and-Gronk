@@ -613,6 +613,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "XInput",
+                    "type": "Button",
+                    "id": "28bc28a7-0034-4330-baf5-b54739568ff8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -679,6 +687,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "RInput",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "c99168ef-ed8d-4e46-97d8-40c7f01f79c1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XInput",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "e17586ee-110d-4515-a9f9-62372b1df9d9",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XInput",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
