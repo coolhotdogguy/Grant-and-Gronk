@@ -12,7 +12,6 @@ public class LevelObjects : MonoBehaviour
 
     BoxCollider2D levelResetCollider;
 
-    [HideInInspector] public bool disableBugs;
 
     private void Start()
     {
@@ -57,7 +56,7 @@ public class LevelObjects : MonoBehaviour
             forestObjects[i].SetActive(false);
             iceObjects[i].SetActive(false);
         }
-        levelResetCollider.offset = new Vector2(45f, -40);
+        levelResetCollider.offset = new Vector2(-35f, -40);
 
     }
 }

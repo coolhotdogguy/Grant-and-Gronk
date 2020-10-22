@@ -23,7 +23,7 @@ public class DamRiver : MonoBehaviour
 
             if (!FindObjectOfType<PlayerData>().dryPlanetUnlocked)
             {
-                promptText.text = "Dam River? Need " + requiredTemporalCoagulate.ToString() + " Temporal Coagulate. Press E";
+                promptText.text = "Dam the primordial river? Stil need " + requiredTemporalCoagulate.ToString() + " Temporal Coagulate. Press E";
             }
             else if (FindObjectOfType<PlayerData>().dryPlanetUnlocked)
             {

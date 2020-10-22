@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.PlayerLoop;
 
 public class PlayerData : MonoBehaviour
 {
@@ -22,7 +21,6 @@ public class PlayerData : MonoBehaviour
 
 
 
-
     public int collectedTemporalCoagulateInt;
     public bool gronkLevel;
     int playerHealth = 3;
@@ -35,6 +33,7 @@ public class PlayerData : MonoBehaviour
     [HideInInspector] public bool icePlanet; //these two are used to track planet type to allow TC refund in Gronk Level
     [HideInInspector] public bool dryPlanet;
     [SerializeField] TilemapSwapper2 tileSwapper;
+    [HideInInspector] public bool enableBugs = true;
 
     void Start()
     {

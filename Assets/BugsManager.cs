@@ -10,7 +10,15 @@ public class BugsManager : MonoBehaviour
     {
         for (int i = 0; i < bugs.Length; i++)
         {
-            bugs[i].SetActive(FindObjectOfType<LevelObjects>().disableBugs);
+            bugs[i].SetActive(FindObjectOfType<PlayerData>().enableBugs);
+        }
+    }
+
+    public void SquashBugs(bool squashed)
+    {
+        for (int i = 0; i < bugs.Length; i++)
+        {
+            bugs[i].SetActive(squashed);
         }
     }
 }

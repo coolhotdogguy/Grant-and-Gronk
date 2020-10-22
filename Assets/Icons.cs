@@ -9,9 +9,11 @@ public class Icons : MonoBehaviour
 {
     [SerializeField] Image[] icons;
     [SerializeField] Image[] iconsBW;
+    [SerializeField] Image bunnyIcon; 
 
     bool acivateIcon;
     bool deactivateIcon;
+    bool bunnyIconActivated;
     int planetTypeToFadeIn;
     int planetTypeToFadeOut;
 
@@ -37,6 +39,14 @@ public class Icons : MonoBehaviour
                 deactivateIcon = false;
             }
         }
+        if (bunnyIconActivated)
+        {
+            bunnyIcon.color += new Color(0f, 0f, 0f, 1f) * Time.deltaTime;
+            if (bunnyIcon.color.a >= 1)
+            {
+                bunnyIconActivated = false;
+            }
+        }
     }
 
     public void FadeInPlanetIcon(int planetType)
@@ -49,5 +59,10 @@ public class Icons : MonoBehaviour
     {
         planetTypeToFadeOut = planetType;
         deactivateIcon = true;
+    }
+
+    public void EnableBunnyIcon()
+    {
+        bunnyIconActivated = true;
     }
 }

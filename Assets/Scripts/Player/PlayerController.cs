@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerGravity = 2.5f;
 
     [Header("Jump Tuning")]
-    [SerializeField] float jumpVelocity = 5f;
+    public float jumpVelocity = 5f;
     [SerializeField] float jumpButtonReleaseDeceleration = 0.5f;
     float jumpForgivenessBuffer = 0.15f; //allows jump input a little before player lands
     float jumpForgivenessBufferTimer;
