@@ -21,13 +21,13 @@ public class DamRiver : MonoBehaviour
             collectTC = FindObjectOfType<PlayerData>().collectedTemporalCoagulateInt;
             dryPlanet = FindObjectOfType<PlayerData>().dryPlanet;
 
-            if (!dryPlanet)
+            if (!FindObjectOfType<PlayerData>().dryPlanetUnlocked)
             {
                 promptText.text = "Dam River? Need " + requiredTemporalCoagulate.ToString() + " Temporal Coagulate. Press E";
             }
-            else if (dryPlanet)
+            else if (FindObjectOfType<PlayerData>().dryPlanetUnlocked)
             {
-                promptText.text = "River has been dammed. Change back?";
+                promptText.text = "River has been dammed.";
             }
         }
     }
@@ -36,16 +36,26 @@ public class DamRiver : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-
-            if (input && !FindObjectOfType<PlayerData>().dryPlanetUnlocked && collectTC >= requiredTemporalCoagulate)
+            if (input)
             {
-                FindObjectOfType<PlayerData>().dryPlanetUnlocked = true;
-                FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
-                FindObjectOfType<PlayerData>().planetSwitcherCounter = 2;
+                if (!FindObjectOfType<PlayerData>().dryPlanetUnlocked && collectTC >= requiredTemporalCoagulate)
+                {
+                    FindObjectOfType<PlayerData>().dryPlanetUnlocked = true;
+                    FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(2);
+                    FindObjectOfType<PlayerData>().planetSwitcherCounter = 2;
+                    FindObjectOfType<Icons>().FadeInPlanetIcon(2);
+                    FindObjectOfType<Icons>().FadeOutPlanetIcon(FindObjectOfType<PlayerData>().previousPlanet);
+                    promptText.text = "River has been dammed";
+                }
+                else if (collectTC < requiredTemporalCoagulate)
+                {
+                    promptText.text = "Not Enough Temporal Coagulate to Alter Time. Still need  " + (requiredTemporalCoagulate - collectTC).ToString();
+                }
             }
-            else if (!changeBack)
-            {
-                if (input)
+
+
+            /*
+            if (input)
                 {
                     if (dryPlanet)
                     {
@@ -53,7 +63,6 @@ public class DamRiver : MonoBehaviour
                         //FindObjectOfType<PlayerData>().AddToInventoy(requiredTemporalCoagulate);
                         //collectTC += requiredTemporalCoagulate;
                         FindObjectOfType<PlayerData>().dryPlanet = false;
-                        changeBack = true;
                         dryPlanet = false;
                     }
                     else if (!dryPlanet)
@@ -72,11 +81,7 @@ public class DamRiver : MonoBehaviour
                         }
                     }
                 }
-            }
-            else
-            {
-                promptText.text = "River is no longer dammed";
-            }
+            */
         }
     }
 

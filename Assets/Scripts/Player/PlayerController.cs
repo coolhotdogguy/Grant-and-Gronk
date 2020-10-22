@@ -299,7 +299,17 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator FreezeHorizontalMovement()
     {
-        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         yield return enemyRepel = false;
 
     }

@@ -12,6 +12,8 @@ public class LevelObjects : MonoBehaviour
 
     BoxCollider2D levelResetCollider;
 
+    [HideInInspector] public bool disableBugs;
+
     private void Start()
     {
         if (FindObjectsOfType(GetType()).Length > 1)

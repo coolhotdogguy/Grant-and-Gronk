@@ -23,7 +23,6 @@ public class PlayerData : MonoBehaviour
 
 
 
-
     public int collectedTemporalCoagulateInt;
     public bool gronkLevel;
     int playerHealth = 3;
@@ -178,10 +177,12 @@ public class PlayerData : MonoBehaviour
 
 
     [HideInInspector] public int planetSwitcherCounter;
+    [HideInInspector] public int previousPlanet;
     [HideInInspector] public bool icePlanetUnlocked;
     [HideInInspector] public bool dryPlanetUnlocked;
-    void OnQInput(InputValue value)
+    void OnEInput(InputValue value)
     {
+        if (gronkLevel) { return; }
 
         if (value.isPressed)
         {
@@ -209,7 +210,14 @@ public class PlayerData : MonoBehaviour
                 SwitchToDryPlanet();
             }
 
+
             FindObjectOfType<BackgroundManager>().EnableBGs(planetSwitcherCounter);
+            if (previousPlanet != planetSwitcherCounter)
+            {
+                FindObjectOfType<Icons>().FadeInPlanetIcon(planetSwitcherCounter);
+            }
+
+            previousPlanet = planetSwitcherCounter;
         }
 
     } //cycle planetTypes
@@ -217,6 +225,7 @@ public class PlayerData : MonoBehaviour
 
     public void SwitchToDryPlanet()
     {
+        FindObjectOfType<Icons>().FadeOutPlanetIcon(1);
         tileSwapper.SetPlanetTypeInt(2);
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(2);
@@ -225,6 +234,7 @@ public class PlayerData : MonoBehaviour
 
     public void SwitchToIcePlanet()
     {
+        FindObjectOfType<Icons>().FadeOutPlanetIcon(0);
         tileSwapper.SetPlanetTypeInt(1);
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(1);
@@ -233,12 +243,19 @@ public class PlayerData : MonoBehaviour
 
     public void SwitchToForestPlanet()
     {
+        if (icePlanetUnlocked && !dryPlanetUnlocked)
+        {
+            FindObjectOfType<Icons>().FadeOutPlanetIcon(1);
+        }
+        if (dryPlanetUnlocked)
+        {
+            FindObjectOfType<Icons>().FadeOutPlanetIcon(2);
+        }
         tileSwapper.SetPlanetTypeInt(0);
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(0);
         FindObjectOfType<PlayerController>().icePlanet = false;
     }
-
 
     private void LoadGrantLevel()
     {

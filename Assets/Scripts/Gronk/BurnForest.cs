@@ -21,13 +21,13 @@ public class BurnForest : MonoBehaviour
             collectTC = FindObjectOfType<PlayerData>().collectedTemporalCoagulateInt;
             icePlanet = FindObjectOfType<PlayerData>().icePlanet;
 
-            if (!icePlanet)
+            if (!FindObjectOfType<PlayerData>().icePlanetUnlocked)
             {
-                promptText.text = "Burn Forest? Need " + requiredTemporalCoagulate.ToString() + " Temporal Coagulate to change. Press E";
+                promptText.text = "Fracture the ancient ice?  " + requiredTemporalCoagulate.ToString() + "  Temporal Coagulate to change. Press E";
             }
-            else if (icePlanet)
+            else if (FindObjectOfType<PlayerData>().icePlanetUnlocked)
             {
-                promptText.text = "Forest has been burned. Change Back?";
+                promptText.text = "Ancient ice has been fractured.";
             }
         }
     }
@@ -36,12 +36,26 @@ public class BurnForest : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (input && !FindObjectOfType<PlayerData>().icePlanetUnlocked && collectTC >= requiredTemporalCoagulate)
+            if (input)
             {
-                FindObjectOfType<PlayerData>().icePlanetUnlocked = true;
-                FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
-                FindObjectOfType<PlayerData>().planetSwitcherCounter = 1;
+                if (!FindObjectOfType<PlayerData>().icePlanetUnlocked && collectTC >= requiredTemporalCoagulate)
+                {
+                    FindObjectOfType<PlayerData>().icePlanetUnlocked = true;
+                    FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
+                    FindObjectOfType<PlayerData>().planetSwitcherCounter = 1;
+                    FindObjectOfType<Icons>().FadeInPlanetIcon(1);
+                    FindObjectOfType<Icons>().FadeOutPlanetIcon(FindObjectOfType<PlayerData>().previousPlanet);
+                    promptText.text = "Ancient ice has been fractured.";
+
+                }
+                else if (collectTC < requiredTemporalCoagulate)
+                {
+                    promptText.text = "Not Enough Temporal Coagulate to Alter Time. Still need  " + (requiredTemporalCoagulate - collectTC).ToString();
+                }
             }
+
+
+            /*
             else if (!changeBack)
             {
                 if (input)
@@ -65,14 +79,11 @@ public class BurnForest : MonoBehaviour
                     }
                     else if (!icePlanet && collectTC < requiredTemporalCoagulate)
                     {
-                        promptText.text = "Not Enough Temporal Coagulate to Alter Time. Needed " + (requiredTemporalCoagulate - collectTC).ToString();
+                        promptText.text = "Not Enough Temporal Coagulate to Alter Time. Still need  " + (requiredTemporalCoagulate - collectTC).ToString();
                     }
                 }
             }
-            else
-            {
-                promptText.text = "The forest is no longer burnt";
-            }
+            */
         }
     }
 
