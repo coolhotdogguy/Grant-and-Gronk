@@ -49,6 +49,7 @@ public class PlayerData : MonoBehaviour
         };
 
         levelObjectsGameObject = FindObjectOfType<LevelObjects>().gameObject;
+
     }
 
     private void HandleTemporalCoagulateVisibility()
@@ -176,7 +177,7 @@ public class PlayerData : MonoBehaviour
     }
 
 
-    int counter;
+    [HideInInspector] public int planetSwitcherCounter;
     [HideInInspector] public bool icePlanetUnlocked;
     [HideInInspector] public bool dryPlanetUnlocked;
     void OnQInput(InputValue value)
@@ -184,25 +185,31 @@ public class PlayerData : MonoBehaviour
 
         if (value.isPressed)
         {
-            counter++;
-            if (!icePlanetUnlocked) { counter = 0; }
-            if (!dryPlanetUnlocked && counter == 2) { counter = 0; }
-            if (counter > 2)
+
+            planetSwitcherCounter++;
+            if (!icePlanetUnlocked) { planetSwitcherCounter = 0; }
+            if (!dryPlanetUnlocked && planetSwitcherCounter == 2) { planetSwitcherCounter = 0; }
+            if (planetSwitcherCounter > 2)
             {
-                counter = 0;
+                planetSwitcherCounter = 0;
             }
-            if (counter == 0)
+
+            FindObjectOfType<TilemapSwapper2>().currentPlanetType = planetSwitcherCounter;
+
+            if (planetSwitcherCounter == 0)
             {
                 SwitchToForestPlanet();
             }
-            if (counter == 1 && icePlanetUnlocked == true)
+            if (planetSwitcherCounter == 1 && icePlanetUnlocked == true)
             {
                 SwitchToIcePlanet();
             }
-            if (counter == 2 && dryPlanetUnlocked == true)
+            if (planetSwitcherCounter == 2 && dryPlanetUnlocked == true)
             {
                 SwitchToDryPlanet();
             }
+
+            FindObjectOfType<BackgroundManager>().EnableBGs(planetSwitcherCounter);
         }
 
     } //cycle planetTypes
@@ -232,13 +239,14 @@ public class PlayerData : MonoBehaviour
         FindObjectOfType<PlayerController>().icePlanet = false;
     }
 
+
     private void LoadGrantLevel()
     {
         SceneManager.LoadScene("Grant Level");
         groundGameObject.GetComponent<TilemapRenderer>().enabled = true;
         groundGameObject.GetComponent<TilemapCollider2D>().enabled = true;
         levelObjectsGameObject.SetActive(true);
-        groundGameObject.GetComponent<TilemapSwapper2>().UpdateTilesAndObjects();
+        tileSwapper.UpdateTilesAndObjects();
     }
 
     private void LoadGronkLevel()

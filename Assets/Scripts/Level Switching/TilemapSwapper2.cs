@@ -48,6 +48,7 @@ public class TilemapSwapper2 : MonoBehaviour
                     }
                     levelObjects.SetForestPlanet();
                     icePlanet = false;
+                    upcomingPlanetType = 0;
                     break;
 
                 case 1:
@@ -67,6 +68,7 @@ public class TilemapSwapper2 : MonoBehaviour
                     }
                     levelObjects.SetIcePlanet();
                     icePlanet = true;
+                    upcomingPlanetType = 1;
                     break;
 
                 case 2:
@@ -86,6 +88,7 @@ public class TilemapSwapper2 : MonoBehaviour
                     }
                     levelObjects.SetDryPlanet();
                     icePlanet = false;
+                    upcomingPlanetType = 2;
                     break;
 
                 default:

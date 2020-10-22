@@ -5712,6 +5712,7 @@ MonoBehaviour:
   icePlanet: 0
   dryPlanet: 0
   tileSwapper: {fileID: 1570284922}
+  planetSwitcherCounter: 0
   icePlanetUnlocked: 0
   dryPlanetUnlocked: 0
 --- !u!114 &845156530
@@ -80032,6 +80033,7 @@ GameObject:
   - component: {fileID: 2066875759}
   - component: {fileID: 2066875758}
   - component: {fileID: 2066875757}
+  - component: {fileID: 2066875762}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -80152,6 +80154,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2066875762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066875756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09850085b4cfd0c46b58a6ee06cb3b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forestBG: {fileID: 928301959}
+  iceBG: {fileID: 1367223712}
+  dryBG: {fileID: 1903490575}
 --- !u!1 &2092067554
 GameObject:
   m_ObjectHideFlags: 0

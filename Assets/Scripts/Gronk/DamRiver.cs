@@ -36,15 +36,22 @@ public class DamRiver : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (!changeBack)
+
+            if (input && !FindObjectOfType<PlayerData>().dryPlanetUnlocked && collectTC >= requiredTemporalCoagulate)
+            {
+                FindObjectOfType<PlayerData>().dryPlanetUnlocked = true;
+                FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
+                FindObjectOfType<PlayerData>().planetSwitcherCounter = 2;
+            }
+            else if (!changeBack)
             {
                 if (input)
                 {
                     if (dryPlanet)
                     {
                         FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(0);
-                        FindObjectOfType<PlayerData>().AddToInventoy(requiredTemporalCoagulate);
-                        collectTC += requiredTemporalCoagulate;
+                        //FindObjectOfType<PlayerData>().AddToInventoy(requiredTemporalCoagulate);
+                        //collectTC += requiredTemporalCoagulate;
                         FindObjectOfType<PlayerData>().dryPlanet = false;
                         changeBack = true;
                         dryPlanet = false;
@@ -54,7 +61,7 @@ public class DamRiver : MonoBehaviour
                         if (collectTC >= requiredTemporalCoagulate && !setPlanetBoolOnExit) //change planet type
                         {
                             FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(2);
-                            FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 2);
+                            //FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 2);
                             setPlanetBoolOnExit = true;
                             promptText.text = "River has been dammed";
                             FindObjectOfType<PlayerData>().dryPlanetUnlocked = true;

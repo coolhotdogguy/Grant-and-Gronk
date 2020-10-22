@@ -68,6 +68,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = FindObjectOfType<PlayerData>().playerPosition; //if Grant Level, more player to previous possition
         }
+
+        if(FindObjectOfType<PlayerData>().planetSwitcherCounter == 1)
+        {
+            icePlanet = true;
+        }
+
+
     }
 
     private void Update()

@@ -36,15 +36,21 @@ public class BurnForest : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (!changeBack)
+            if (input && !FindObjectOfType<PlayerData>().icePlanetUnlocked && collectTC >= requiredTemporalCoagulate)
+            {
+                FindObjectOfType<PlayerData>().icePlanetUnlocked = true;
+                FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
+                FindObjectOfType<PlayerData>().planetSwitcherCounter = 1;
+            }
+            else if (!changeBack)
             {
                 if (input)
                 {
                     if (icePlanet)
                     {
                         FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(0);
-                        FindObjectOfType<PlayerData>().AddToInventoy(requiredTemporalCoagulate);
-                        collectTC += requiredTemporalCoagulate;
+                        //FindObjectOfType<PlayerData>().AddToInventoy(requiredTemporalCoagulate);
+                        //collectTC += requiredTemporalCoagulate;
                         FindObjectOfType<PlayerData>().icePlanet = false;
                         changeBack = true;
                         icePlanet = false;
@@ -52,7 +58,7 @@ public class BurnForest : MonoBehaviour
                     else if (!icePlanet && collectTC >= requiredTemporalCoagulate && !setPlanetBoolOnExit)
                     {
                         FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
-                        FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 1);
+                        //FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 1);
                         setPlanetBoolOnExit = true;
                         promptText.text = "The forest is burnt";
                         FindObjectOfType<PlayerData>().icePlanetUnlocked = true;
@@ -67,7 +73,6 @@ public class BurnForest : MonoBehaviour
             {
                 promptText.text = "The forest is no longer burnt";
             }
-
         }
     }
 
