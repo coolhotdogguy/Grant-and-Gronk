@@ -370,4 +370,9 @@ public class PlayerController : MonoBehaviour
         yield return enemyRepel = false;
     }
 
+    void OnExitBind()
+    {
+        Application.Quit();
+    }
+
 }
