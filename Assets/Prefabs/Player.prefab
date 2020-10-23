@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1533929362}
   - component: {fileID: 1533929363}
   - component: {fileID: 1533929364}
+  - component: {fileID: 2621065566687572423}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,6 +154,7 @@ MonoBehaviour:
     m_Bits: 2048
   NoDrag: {fileID: 6200000, guid: 68041773822ed0b4392532fafa401561, type: 2}
   IcyDrag: {fileID: 6200000, guid: 9153e64be50c8814f9bee7a029fe9141, type: 2}
+  icePlanet: 0
   state: 0
 --- !u!114 &2019224217938154183
 MonoBehaviour:
@@ -280,3 +282,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f09c78bbe167da40945b22f18b97832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &2621065566687572423
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019224217938154177}
+  m_Enabled: 1
