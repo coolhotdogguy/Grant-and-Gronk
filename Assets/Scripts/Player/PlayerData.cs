@@ -62,9 +62,9 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    private void HandleHealthUI()
+    public void HandleHealthUI()
     {
-        if (!gronkLevel)
+        if (!gronkLevel && !FindObjectOfType<PlayerController>().invincible)
         {
 
             if (playerHealth == 4)
@@ -92,7 +92,7 @@ public class PlayerData : MonoBehaviour
                 healthUnits[2].enabled = false;
             }
         }
-        else if (gronkLevel)
+        else if (gronkLevel || FindObjectOfType<PlayerController>().invincible)
         {
             healthUnits[0].enabled = false;
             healthUnits[1].enabled = false;

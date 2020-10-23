@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerSpeed = 9f;
     [SerializeField] float playerSpeedIceMultiplier = 10f;
     [SerializeField] float playerGravity = 2.5f;
+    public bool invincible;
 
     [Header("Jump Tuning")]
     public float jumpVelocity = 5f;
@@ -48,7 +49,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public enum AnimationState { idle, running, jumping, falling}
     [HideInInspector] public AnimationState state = AnimationState.idle;
 
-   
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x > collision.transform.position.x) //player is right of bug
         {
             rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            if (!enemyRepel)
+            if (!enemyRepel && !invincible)
             {
                 FindObjectOfType<PlayerData>().DamagePlayer();
             }
@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
         else //player is left of bug
         {
             rb2d.velocity = new Vector2(-collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            if (!enemyRepel)
+            if (!enemyRepel && !invincible)
             {
                 FindObjectOfType<PlayerData>().DamagePlayer();
             }

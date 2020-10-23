@@ -5,6 +5,7 @@ using UnityEngine;
 public class WinGame : MonoBehaviour
 {
     [SerializeField] Animator creditsAnim;
+    [SerializeField] GameObject credits;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +32,7 @@ public class WinGame : MonoBehaviour
         FindObjectOfType<CameraController>().freezeCamera = false;
         FindObjectOfType<CameraController>().ResetCameraAfterWin();
         creditsAnim.SetBool("Credits", false);
+        credits.SetActive(false);
         Debug.Log("won");
     }
 }

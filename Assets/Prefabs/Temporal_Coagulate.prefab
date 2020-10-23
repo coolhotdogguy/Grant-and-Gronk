@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ff11ab3231e134eacb036ad726d7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  jumperTemporalCoagulate: 0
 --- !u!95 &3337337079459497050
 Animator:
   serializedVersion: 3
