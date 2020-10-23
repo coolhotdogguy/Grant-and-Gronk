@@ -163,6 +163,14 @@
                     "expectedControlType": "Quaternion",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ExitBind",
+                    "type": "Button",
+                    "id": "ad1f5a90-8297-4200-974a-b2c8da85ef15",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -581,6 +589,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4136fe39-073d-4a06-b716-94993a8e5cdc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitBind",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
