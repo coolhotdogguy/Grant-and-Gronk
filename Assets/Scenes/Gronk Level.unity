@@ -1561,7 +1561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 304901372}
-  requiredTemporalCoagulate: 15
+  requiredTemporalCoagulate: 16
   dryPlanet: 0
 --- !u!4 &688331618
 Transform:
