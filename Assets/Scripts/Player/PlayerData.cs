@@ -103,7 +103,7 @@ public class PlayerData : MonoBehaviour
     public void AddToInventoy(int i)
     {
         collectedTemporalCoagulateInt += i;
-        inventoryText.text = collectedTemporalCoagulateInt.ToString();
+        inventoryText.text = collectedTemporalCoagulateInt < 10 ? "0" + collectedTemporalCoagulateInt.ToString() : collectedTemporalCoagulateInt.ToString();
     }
 
     public void SubtractFromInventroy(int reqTempCoag, int planetType)
