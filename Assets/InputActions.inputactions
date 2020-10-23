@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ExitBind",
+                    "type": "Button",
+                    "id": "6762c299-860b-4254-8e36-94ab1f578796",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -77,6 +85,17 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e6aa1d73-c4bb-4932-85b2-16ca923bc1c1",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitBind",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -161,14 +180,6 @@
                     "type": "PassThrough",
                     "id": "9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be",
                     "expectedControlType": "Quaternion",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "ExitBind",
-                    "type": "Button",
-                    "id": "ad1f5a90-8297-4200-974a-b2c8da85ef15",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -591,17 +602,6 @@
                     "action": "TrackedDeviceOrientation",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4136fe39-073d-4a06-b716-94993a8e5cdc",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ExitBind",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -618,14 +618,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "QInput",
-                    "type": "Button",
-                    "id": "c9ad635d-1ad8-4ae3-b745-71067dc4a43a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "RInput",
                     "type": "Button",
                     "id": "4efb98c5-8e14-4f54-92f7-64bb0ebd53d7",
@@ -637,6 +629,14 @@
                     "name": "XInput",
                     "type": "Button",
                     "id": "28bc28a7-0034-4330-baf5-b54739568ff8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "QInput",
+                    "type": "Button",
+                    "id": "023ccb2f-f833-4c4a-94fb-c86aa9f7573b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -662,28 +662,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "EInput",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "bffd32a2-d2ff-4025-811d-d6d7ad5ed1fe",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "QInput",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "positive",
-                    "id": "8589e1ec-e109-4757-a054-0d6803a7f508",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "QInput",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -730,6 +708,17 @@
                     "action": "XInput",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "cfb83e41-19a0-47da-b8c5-7d97b32a4768",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
