@@ -30,6 +30,7 @@ public class WinGame : MonoBehaviour
     {
         FindObjectOfType<CameraController>().freezeCamera = false;
         FindObjectOfType<CameraController>().ResetCameraAfterWin();
+        creditsAnim.SetBool("Credits", false);
         Debug.Log("won");
     }
 }
