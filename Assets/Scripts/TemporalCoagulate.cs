@@ -13,6 +13,7 @@ public class TemporalCoagulate : MonoBehaviour
             if (!jumperTemporalCoagulate)
             {
                 FindObjectOfType<PlayerData>().AddToInventoy(1);
+                FindObjectOfType<SFXPlayer>().PlayPickupSound();
             }
             if(jumperTemporalCoagulate)
             {

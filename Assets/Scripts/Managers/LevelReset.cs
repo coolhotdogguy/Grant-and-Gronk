@@ -9,8 +9,16 @@ public class LevelReset : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             FindObjectOfType<PlayerData>().DamagePlayer();
+
+            if (FindObjectOfType<PlayerData>().playerHealth > 0)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                FindObjectOfType<CameraController>().freezeCamera = true;
+            }
         }
     }
 }

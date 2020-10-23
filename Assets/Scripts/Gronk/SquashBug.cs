@@ -19,16 +19,20 @@ public class SquashBug : MonoBehaviour
         bugsEnabled = FindObjectOfType<PlayerData>().enableBugs;
     }
 
-    private void Update()
-    {
-        Debug.Log("bugsEnable: " + bugsEnabled);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            promptText.text = "Squash the ancestral bug?  " + requiredTemporalCoagulate.ToString() + "  Temporal Coagulate to change. Press E";
+            if(bugsEnabled)
+            {
+                promptText.text = "Squash the ancestral bug?  " + requiredTemporalCoagulate.ToString() + "  Temporal Coagulate to change. Press E";
+            }
+            else if (!bugsEnabled)
+            {
+                promptText.text = "Bug's lineage has been squished, E to change back.";
+            }
+
         }
     }
 
@@ -48,6 +52,7 @@ public class SquashBug : MonoBehaviour
                     bugsEnabled = false;
                     SquashBugs();
                     setBoolOnTriggerExit = true;
+                    FindObjectOfType<SFXPlayer>().PlayBugSquashSound();
 
                 }
                 else if (collectedTC >= requiredTemporalCoagulate && !bugsEnabled && !setBoolOnTriggerExit)

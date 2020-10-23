@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour
                 {
                     rb2d.velocity = new Vector2(rb2d.velocity.x, collision.gameObject.GetComponent<Rabbit>().BounceVelocity());
                     bounce = true;
+                    FindObjectOfType<SFXPlayer>().PlayBounceSound();
                 }
                 break;
             case "Climable":
@@ -276,6 +277,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleBugCollision(Collider2D collision)
     {
+        FindObjectOfType<SFXPlayer>().PlayHurtSound();
+
         if (transform.position.x > collision.transform.position.x) //player is right of bug
         {
             rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
@@ -294,7 +297,15 @@ public class PlayerController : MonoBehaviour
         }
         bounce = true;
         enemyRepel = true;
-        StartCoroutine(FreezeHorizontalMovement());
+        if (FindObjectOfType<PlayerData>().playerHealth > 0)
+        {
+            StartCoroutine(FreezeHorizontalMovement());
+        }
+        else
+        {
+            FindObjectOfType<CameraController>().freezeCamera = true;
+            StartCoroutine(DeathFreezeMovement());
+        }
     }
 
     IEnumerator FreezeHorizontalMovement()
@@ -312,6 +323,51 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         yield return enemyRepel = false;
 
+    }
+
+    IEnumerator DeathFreezeMovement()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        yield return enemyRepel = false;
     }
 
 }

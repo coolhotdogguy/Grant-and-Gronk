@@ -46,6 +46,7 @@ public class BurnForest : MonoBehaviour
                     FindObjectOfType<Icons>().FadeInPlanetIcon(1);
                     FindObjectOfType<Icons>().FadeOutPlanetIcon(FindObjectOfType<PlayerData>().previousPlanet);
                     promptText.text = "Ancient ice has been fractured.";
+                    FindObjectOfType<SFXPlayer>().PlayIceBreakSound();
 
                 }
                 else if (collectTC < requiredTemporalCoagulate)

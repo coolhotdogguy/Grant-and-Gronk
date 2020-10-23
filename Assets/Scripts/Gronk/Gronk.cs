@@ -43,6 +43,7 @@ public class Gronk : MonoBehaviour
     private void Start()
     {
         rb2d.gravityScale = playerGravity;
+        FindObjectOfType<SFXPlayer>().SwitchAmbience(3);
     }
 
     private void Update()

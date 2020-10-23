@@ -46,6 +46,7 @@ public class DamRiver : MonoBehaviour
                     FindObjectOfType<Icons>().FadeInPlanetIcon(2);
                     FindObjectOfType<Icons>().FadeOutPlanetIcon(FindObjectOfType<PlayerData>().previousPlanet);
                     promptText.text = "River has been dammed";
+                    FindObjectOfType<SFXPlayer>().PlayDamSound();
                 }
                 else if (collectTC < requiredTemporalCoagulate)
                 {

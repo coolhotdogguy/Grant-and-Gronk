@@ -13,17 +13,17 @@ public class PlayerData : MonoBehaviour
 
 
     //CHEAT, delete
-    void OnXInput(InputValue value)
+   /* void OnXInput(InputValue value)
     {
         collectedTemporalCoagulateInt += 5;
         inventoryText.text = collectedTemporalCoagulateInt.ToString();
-    }
+    }*/
 
 
 
     public int collectedTemporalCoagulateInt;
     public bool gronkLevel;
-    int playerHealth = 3;
+    public int playerHealth = 4;
     [SerializeField] Image[] healthUnits;
     [SerializeField] TextMeshProUGUI inventoryText;
     [SerializeField] GameObject temporalCoagulatesFolder;
@@ -67,32 +67,32 @@ public class PlayerData : MonoBehaviour
         if (!gronkLevel)
         {
 
-            if (playerHealth == 3)
+            if (playerHealth == 4)
             {
                 healthUnits[0].enabled = true;
                 healthUnits[1].enabled = true;
                 healthUnits[2].enabled = true;
             }
-            if (playerHealth == 2)
+            if (playerHealth == 3)
             {
                 healthUnits[0].enabled = true;
                 healthUnits[1].enabled = true;
                 healthUnits[2].enabled = false;
             }
-            if (playerHealth == 1)
+            if (playerHealth == 2)
             {
                 healthUnits[0].enabled = true;
                 healthUnits[1].enabled = false;
                 healthUnits[2].enabled = false;
             }
-            if (playerHealth <= 0)
+            if (playerHealth <= 1)
             {
                 healthUnits[0].enabled = false;
                 healthUnits[1].enabled = false;
                 healthUnits[2].enabled = false;
             }
         }
-        else
+        else if (gronkLevel)
         {
             healthUnits[0].enabled = false;
             healthUnits[1].enabled = false;
@@ -132,19 +132,21 @@ public class PlayerData : MonoBehaviour
 
     IEnumerator HandleDyingCoroutine()
     {
-        yield return new WaitForSeconds(1f);
-        OnDeath();
+        FindObjectOfType<CameraController>().freezeCamera = true;
+        yield return new WaitForSeconds(2f);
+        OnDeathReset();
     }
 
-    void OnDeath()
+    void OnDeathReset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        FindObjectOfType<CameraController>().freezeCamera = false;
 
         FindObjectOfType<TempCoagManager>().EnableAllTemporalCoagulate();
         collectedTemporalCoagulateInt = 0;
         inventoryText.text = collectedTemporalCoagulateInt.ToString();
 
-        playerHealth = 3;
+        playerHealth = 4;
         HandleHealthUI();
 
         playerPosition = Vector2.zero;
@@ -172,6 +174,7 @@ public class PlayerData : MonoBehaviour
 
         HandleHealthUI();
         HandleTemporalCoagulateVisibility();
+        FindObjectOfType<SFXPlayer>().PlayTimeTravelSound();
     }
 
 
@@ -229,6 +232,7 @@ public class PlayerData : MonoBehaviour
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(2);
         FindObjectOfType<PlayerController>().icePlanet = false;
+        FindObjectOfType<SFXPlayer>().SwitchAmbience(2);
     }
 
     public void SwitchToIcePlanet()
@@ -238,6 +242,7 @@ public class PlayerData : MonoBehaviour
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(1);
         FindObjectOfType<PlayerController>().icePlanet = true;
+        FindObjectOfType<SFXPlayer>().SwitchAmbience(1);
     }
 
     public void SwitchToForestPlanet()
@@ -254,6 +259,7 @@ public class PlayerData : MonoBehaviour
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(0);
         FindObjectOfType<PlayerController>().icePlanet = false;
+        FindObjectOfType<SFXPlayer>().SwitchAmbience(0);
     }
 
     private void LoadGrantLevel()
@@ -263,6 +269,7 @@ public class PlayerData : MonoBehaviour
         groundGameObject.GetComponent<TilemapCollider2D>().enabled = true;
         levelObjectsGameObject.SetActive(true);
         tileSwapper.UpdateTilesAndObjects();
+        FindObjectOfType<SFXPlayer>().SwitchAmbience(FindObjectOfType<TilemapSwapper2>().currentPlanetType);
     }
 
     private void LoadGronkLevel()
