@@ -142,6 +142,8 @@ public class PlayerData : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         FindObjectOfType<CameraController>().freezeCamera = false;
 
+        FindObjectOfType<PlayerData>().icePlanetUnlocked = false;
+        FindObjectOfType<PlayerData>().dryPlanetUnlocked = false;
         FindObjectOfType<TempCoagManager>().EnableAllTemporalCoagulate();
         collectedTemporalCoagulateInt = 0;
         inventoryText.text = collectedTemporalCoagulateInt.ToString();
