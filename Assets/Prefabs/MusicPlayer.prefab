@@ -146,8 +146,10 @@ MonoBehaviour:
   music:
   - {fileID: 8300000, guid: 98e8c5b59a38efc45984d6cc3e88cb07, type: 3}
   - {fileID: 8300000, guid: f3cf4af599096e54e804277555620e65, type: 3}
+  - {fileID: 8300000, guid: 78253db0cc8d2c74f9b99a14a9b9310f, type: 3}
   musicDistorted: []
   ambient: []
+  volume: 1
 --- !u!114 &7354189848880636465
 MonoBehaviour:
   m_ObjectHideFlags: 0
