@@ -18,7 +18,7 @@ public class TemporalCoagulate : MonoBehaviour
             if(jumperTemporalCoagulate)
             {
                 FindObjectOfType<PlayerController>().jumpVelocity = 22f;
-                FindObjectOfType<PlayerController>().invincible = true;
+                FindObjectOfType<PlayerData>().invincible = true;
                 FindObjectOfType<Icons>().EnableBunnyIcon();
                 FindObjectOfType<PlayerData>().HandleHealthUI();
             }

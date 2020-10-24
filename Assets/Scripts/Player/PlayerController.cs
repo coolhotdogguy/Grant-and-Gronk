@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerSpeed = 9f;
     [SerializeField] float playerSpeedIceMultiplier = 10f;
     [SerializeField] float playerGravity = 2.5f;
-    public bool invincible;
 
     [Header("Jump Tuning")]
     public float jumpVelocity = 5f;
@@ -54,6 +53,7 @@ public class PlayerController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
+        jumpVelocity = FindObjectOfType<PlayerData>().invincible ? 22f : jumpVelocity;
     }
 
     private void Start()
@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x > collision.transform.position.x) //player is right of bug
         {
             rb2d.velocity = new Vector2(collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            if (!enemyRepel && !invincible)
+            if (!enemyRepel && !FindObjectOfType<PlayerData>().invincible)
             {
                 FindObjectOfType<PlayerData>().DamagePlayer();
             }
@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
         else //player is left of bug
         {
             rb2d.velocity = new Vector2(-collision.GetComponent<Bug>().BounceBackForce().x, collision.GetComponent<Bug>().BounceBackForce().y);
-            if (!enemyRepel && !invincible)
+            if (!enemyRepel && !FindObjectOfType<PlayerData>().invincible)
             {
                 FindObjectOfType<PlayerData>().DamagePlayer();
             }

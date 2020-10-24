@@ -34,6 +34,7 @@ public class PlayerData : MonoBehaviour
     [HideInInspector] public bool dryPlanet;
     [SerializeField] TilemapSwapper2 tileSwapper;
     [HideInInspector] public bool enableBugs = true;
+    public bool invincible;
 
     void Start()
     {
@@ -64,7 +65,7 @@ public class PlayerData : MonoBehaviour
 
     public void HandleHealthUI()
     {
-        if (!gronkLevel && !FindObjectOfType<PlayerController>().invincible)
+        if (!gronkLevel && !invincible)
         {
 
             if (playerHealth == 4)
@@ -92,7 +93,7 @@ public class PlayerData : MonoBehaviour
                 healthUnits[2].enabled = false;
             }
         }
-        else if (gronkLevel || FindObjectOfType<PlayerController>().invincible)
+        else if (gronkLevel || invincible)
         {
             healthUnits[0].enabled = false;
             healthUnits[1].enabled = false;
@@ -122,7 +123,7 @@ public class PlayerData : MonoBehaviour
 
     public void DamagePlayer()
     {
-        playerHealth--;
+        if(!invincible) playerHealth--;
         HandleHealthUI();
         if (playerHealth <= 0)
         {
