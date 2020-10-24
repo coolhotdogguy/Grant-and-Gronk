@@ -13,12 +13,16 @@ public class PlayerData : MonoBehaviour
 
 
     //CHEAT, delete
-   /* void OnXInput(InputValue value)
-    {
-        collectedTemporalCoagulateInt += 5;
-        inventoryText.text = collectedTemporalCoagulateInt.ToString();
-    }*/
+    /* void OnXInput(InputValue value)
+     {
+         collectedTemporalCoagulateInt += 5;
+         inventoryText.text = collectedTemporalCoagulateInt.ToString();
+     }*/
 
+    private void Update()
+    {
+        Debug.Log(planetSwitcherCounter);
+    }
 
 
     public int collectedTemporalCoagulateInt;
@@ -217,10 +221,8 @@ public class PlayerData : MonoBehaviour
 
 
             FindObjectOfType<BackgroundManager>().EnableBGs(planetSwitcherCounter);
-            if (previousPlanet != planetSwitcherCounter)
-            {
-                FindObjectOfType<Icons>().FadeInPlanetIcon(planetSwitcherCounter);
-            }
+
+            FindObjectOfType<Icons>().FadeInPlanetIcon(planetSwitcherCounter);
 
             previousPlanet = planetSwitcherCounter;
         }
