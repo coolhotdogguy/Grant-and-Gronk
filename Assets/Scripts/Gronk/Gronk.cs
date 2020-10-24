@@ -44,6 +44,7 @@ public class Gronk : MonoBehaviour
     {
         rb2d.gravityScale = playerGravity;
         FindObjectOfType<SFXPlayer>().SwitchAmbience(3);
+        FindObjectOfType<MusicPlayer>().volume = 1f;
     }
 
     private void Update()

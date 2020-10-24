@@ -14,7 +14,7 @@ public class WinGame : MonoBehaviour
             FindObjectOfType<CameraController>().winCamera = true;
             FindObjectOfType<MusicPlayer>().audioSource.clip = FindObjectOfType<MusicPlayer>().music[3];
             FindObjectOfType<MusicPlayer>().audioSource.Play();
-            FindObjectOfType<MusicPlayer>().volume = 0.2f;
+            FindObjectOfType<MusicPlayer>().volume = 0.5f;
             creditsAnim.SetBool("Credits", true);
             this.GetComponent<BoxCollider2D>().enabled = false;
         }
