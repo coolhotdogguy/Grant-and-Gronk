@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WinGame : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class WinGame : MonoBehaviour
             FindObjectOfType<MusicPlayer>().audioSource.Play();
             FindObjectOfType<MusicPlayer>().volume = 0.5f;
             creditsAnim.SetBool("Credits", true);
+            FindObjectOfType<PlayerData>().GetComponent<PlayerInput>().enabled = false;
             this.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
@@ -34,6 +36,6 @@ public class WinGame : MonoBehaviour
         FindObjectOfType<CameraController>().ResetCameraAfterWin();
         creditsAnim.SetBool("Credits", false);
         credits.SetActive(false);
-        Debug.Log("won");
+        FindObjectOfType<PlayerData>().GetComponent<PlayerInput>().enabled = true;
     }
 }
