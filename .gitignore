@@ -17,6 +17,8 @@
 !/[Ll]ibrary/*.asset
 /[Ll]ibrary/InspectorExpandedItems.asset
 /[Ll]ibrary/SceneVisibilityState.asset
+/[Ll]ibrary/SpriteAtlasDatabase.asset
+/[Ll]ibrary/EditorUserBuildSettings.asset
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
