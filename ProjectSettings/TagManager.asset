@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Backlight
+    uniqueID: 3668917189
+    locked: 0
   - name: Player
     uniqueID: 121040157
     locked: 0
