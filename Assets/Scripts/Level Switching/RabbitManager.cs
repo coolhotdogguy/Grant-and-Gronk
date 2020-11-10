@@ -17,21 +17,21 @@ public class RabbitManager : MonoBehaviour
         HandleRabbitVisibility(FindObjectOfType<TilemapSwapper2>().currentPlanetType);
     }
 
-    public void HandleRabbitVisibility(int levelType)
+    public void HandleRabbitVisibility(PlanetType levelType)
     {
         switch(levelType)
         {
-            case 0:
+            case PlanetType.Forest:
                 forestRabbits = true;
                 iceRabbits = false;
                 dryRabbits = false;
                 break;
-            case 1:
+            case PlanetType.Ice:
                 forestRabbits = false;
                 iceRabbits = true;
                 dryRabbits = false;
                 break;
-            case 2:
+            case PlanetType.Desert:
                 forestRabbits = false;
                 iceRabbits = false;
                 dryRabbits = true;

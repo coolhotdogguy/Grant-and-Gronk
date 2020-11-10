@@ -15,6 +15,7 @@ public class GronkAction : MonoBehaviour
     [SerializeField] string done;
 
     PlayerData playerData;
+    Icons icons;
 
     bool input;
     bool setPlanetOnExit;
@@ -22,6 +23,7 @@ public class GronkAction : MonoBehaviour
     private void Start()
     {
         playerData = FindObjectOfType<PlayerData>();
+        icons = FindObjectOfType<Icons>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,14 +47,14 @@ public class GronkAction : MonoBehaviour
         {
             if (input)
             {
-                if (!FindObjectOfType<PlayerData>().icePlanetUnlocked && playerData.collectedTemporalCoagulateInt >= requiredTemporalCoagulate)
+                if (!(switchTo == PlanetType.Ice ? playerData.icePlanetUnlocked : playerData.dryPlanetUnlocked) && playerData.collectedTemporalCoagulateInt >= requiredTemporalCoagulate)
                 {
-                    FindObjectOfType<PlayerData>().icePlanetUnlocked = true;
-                    FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
-                    FindObjectOfType<PlayerData>().planetSwitcherCounter = 1;
-                    FindObjectOfType<Icons>().FadeInPlanetIcon(1);
-                    FindObjectOfType<Icons>().FadeOutPlanetIcon(FindObjectOfType<PlayerData>().previousPlanet);
-                    promptText.text = "Ancient ice has been fractured.";
+                    playerData.icePlanetUnlocked = true;
+                    FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(switchTo);
+                    playerData.planetSwitcherCounter = (int)switchTo;
+                    icons.FadeInPlanetIcon((int)switchTo);
+                    icons.FadeOutPlanetIcon(playerData.previousPlanet);
+                    promptText.text = done;
                     FindObjectOfType<SFXPlayer>().PlayIceBreakSound();
 
                 }
@@ -69,12 +71,6 @@ public class GronkAction : MonoBehaviour
         if (collision.tag == "Player")
         {
             promptText.text = "";
-            if (setPlanetOnExit)
-            {
-                icePlanet = true;
-                setPlanetOnExit = false;
-            }
-            changeBack = false;
         }
     }
 

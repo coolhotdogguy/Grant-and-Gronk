@@ -8,7 +8,7 @@ public class Background : MonoBehaviour
 
     private void Start()
     {
-        if (thisPlanetType == FindObjectOfType<TilemapSwapper2>().currentPlanetType)
+        if (thisPlanetType == (int)FindObjectOfType<TilemapSwapper2>().currentPlanetType)
         {
             gameObject.SetActive(true);
         }

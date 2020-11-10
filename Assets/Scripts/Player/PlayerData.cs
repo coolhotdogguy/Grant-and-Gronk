@@ -185,7 +185,7 @@ public class PlayerData : MonoBehaviour
                 planetSwitcherCounter = 0;
             }
 
-            FindObjectOfType<TilemapSwapper2>().currentPlanetType = planetSwitcherCounter;
+            FindObjectOfType<TilemapSwapper2>().currentPlanetType = (PlanetType)planetSwitcherCounter;
 
             if (planetSwitcherCounter == 0)
             {
@@ -216,7 +216,7 @@ public class PlayerData : MonoBehaviour
         FindObjectOfType<Icons>().FadeOutPlanetIcon(1);
         tileSwapper.SetPlanetTypeInt(PlanetType.Desert);
         tileSwapper.UpdateTilesAndObjects();
-        FindObjectOfType<RabbitManager>().HandleRabbitVisibility(2);
+        FindObjectOfType<RabbitManager>().HandleRabbitVisibility(PlanetType.Desert);
         FindObjectOfType<PlayerController>().icePlanet = false;
         FindObjectOfType<SFXPlayer>().SwitchAmbience(2);
     }
@@ -226,7 +226,7 @@ public class PlayerData : MonoBehaviour
         FindObjectOfType<Icons>().FadeOutPlanetIcon(0);
         tileSwapper.SetPlanetTypeInt(PlanetType.Ice);
         tileSwapper.UpdateTilesAndObjects();
-        FindObjectOfType<RabbitManager>().HandleRabbitVisibility(1);
+        FindObjectOfType<RabbitManager>().HandleRabbitVisibility(PlanetType.Ice);
         FindObjectOfType<PlayerController>().icePlanet = true;
         FindObjectOfType<SFXPlayer>().SwitchAmbience(1);
     }
