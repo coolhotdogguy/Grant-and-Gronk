@@ -16,7 +16,6 @@ public class TemporalCoagulate : MonoBehaviour
         playerData = FindObjectOfType<PlayerData>();
         playerController = FindObjectOfType<PlayerController>();
         icons = FindObjectOfType<Icons>();
-        sFXPlayer = FindObjectOfType<SFXPlayer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +25,7 @@ public class TemporalCoagulate : MonoBehaviour
             if (!jumperTemporalCoagulate)
             {
                 playerData.AddToInventoy(1);
-                sFXPlayer.PlayPickupSound();
+                FindObjectOfType<SFXPlayer>().PlayPickupSound();
             }
             if(jumperTemporalCoagulate)
             {
