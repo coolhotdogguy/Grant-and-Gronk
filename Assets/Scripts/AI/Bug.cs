@@ -35,7 +35,6 @@ public class Bug : MonoBehaviour
     private void Move()
     {
         Vector3 targetPosition = FlyingSwitch(); //handles knoing when to up/down
-
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
         if (transform.position == targetPosition)

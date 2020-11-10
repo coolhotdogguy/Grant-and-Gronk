@@ -6,21 +6,34 @@ using UnityEngine;
 public class TemporalCoagulate : MonoBehaviour
 {
     [SerializeField] bool jumperTemporalCoagulate;
+    PlayerData playerData;
+    PlayerController playerController;
+    Icons icons;
+    SFXPlayer sFXPlayer;
+
+    private void Start()
+    {
+        playerData = FindObjectOfType<PlayerData>();
+        playerController = FindObjectOfType<PlayerController>();
+        icons = FindObjectOfType<Icons>();
+        sFXPlayer = FindObjectOfType<SFXPlayer>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             if (!jumperTemporalCoagulate)
             {
-                FindObjectOfType<PlayerData>().AddToInventoy(1);
-                FindObjectOfType<SFXPlayer>().PlayPickupSound();
+                playerData.AddToInventoy(1);
+                sFXPlayer.PlayPickupSound();
             }
             if(jumperTemporalCoagulate)
             {
-                FindObjectOfType<PlayerController>().jumpVelocity = 22f;
-                FindObjectOfType<PlayerData>().invincible = true;
-                FindObjectOfType<Icons>().EnableBunnyIcon();
-                FindObjectOfType<PlayerData>().HandleHealthUI();
+                playerController.jumpVelocity = 22f;
+                playerData.invincible = true;
+                icons.EnableBunnyIcon();
+                playerData.HandleHealthUI();
             }
             this.gameObject.SetActive(false);
         }

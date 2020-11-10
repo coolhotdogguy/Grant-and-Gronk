@@ -17,40 +17,37 @@ public class Rabbit : MonoBehaviour
     bool isGrounded;
     bool isSlipperyGrounded;
 
-
-    Animator anim;
+    Animator animator;
     Rigidbody2D rb2d;
-    Collider2D coll;
-
-
+    Collider2D collider2d;
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        coll = GetComponent<Collider2D>();
-
-        Physics2D.IgnoreCollision(FindObjectOfType<PlayerController>().gameObject.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<BoxCollider2D>());
+        collider2d = GetComponent<Collider2D>();
+        // Physics2D.IgnoreCollision(FindObjectOfType<PlayerController>().gameObject.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<BoxCollider2D>());
+        // Not needed because its already disabled in Unity’s Collision Matrix
     }
 
     private void Update()
     {
-        isGrounded = coll.IsTouchingLayers(ground);
-        isSlipperyGrounded = coll.IsTouchingLayers(slipperyGround);
+        isGrounded = collider2d.IsTouchingLayers(ground);
+        isSlipperyGrounded = collider2d.IsTouchingLayers(slipperyGround);
 
-        if (anim.GetBool("Jumping"))
+        if (animator.GetBool("Jumping"))
         {
             if (rb2d.velocity.y < 0.1f)
             {
-                anim.SetBool("Falling", true);
-                anim.SetBool("Jumping", false);
+                animator.SetBool("Falling", true);
+                animator.SetBool("Jumping", false);
             }
         }
-        if (anim.GetBool("Falling"))
+        if (animator.GetBool("Falling"))
         {
             if (isGrounded || isSlipperyGrounded)
             {
-                anim.SetBool("Falling", false);
+                animator.SetBool("Falling", false);
             }
         }
     }
@@ -78,7 +75,7 @@ public class Rabbit : MonoBehaviour
                 if (isGrounded || isSlipperyGrounded)
                 {
                     rb2d.velocity = new Vector2(jumpLength, jumpHeight);
-                    anim.SetBool("Jumping", true);
+                    animator.SetBool("Jumping", true);
                 }
             }
             else
@@ -98,7 +95,7 @@ public class Rabbit : MonoBehaviour
                 if (isGrounded || isSlipperyGrounded)
                 {
                     rb2d.velocity = new Vector2(-jumpLength, jumpHeight);
-                    anim.SetBool("Jumping", true);
+                    animator.SetBool("Jumping", true);
                 }
             }
             else

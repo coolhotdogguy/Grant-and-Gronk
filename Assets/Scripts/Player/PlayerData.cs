@@ -10,8 +10,6 @@ using TMPro;
 public class PlayerData : MonoBehaviour
 {
 
-
-
     //CHEAT, delete
     /* void OnXInput(InputValue value)
      {
@@ -21,9 +19,8 @@ public class PlayerData : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(planetSwitcherCounter);
+        //Debug.Log(planetSwitcherCounter);
     }
-
 
     public int collectedTemporalCoagulateInt;
     public bool gronkLevel;
@@ -71,30 +68,14 @@ public class PlayerData : MonoBehaviour
     {
         if (!gronkLevel && !invincible)
         {
-
-            if (playerHealth == 4)
+            for (int i = 0; i < playerHealth; i++)
             {
-                healthUnits[0].enabled = true;
-                healthUnits[1].enabled = true;
-                healthUnits[2].enabled = true;
-            }
-            if (playerHealth == 3)
-            {
-                healthUnits[0].enabled = true;
-                healthUnits[1].enabled = true;
-                healthUnits[2].enabled = false;
-            }
-            if (playerHealth == 2)
-            {
-                healthUnits[0].enabled = true;
-                healthUnits[1].enabled = false;
-                healthUnits[2].enabled = false;
-            }
-            if (playerHealth <= 1)
-            {
-                healthUnits[0].enabled = false;
-                healthUnits[1].enabled = false;
-                healthUnits[2].enabled = false;
+                try
+                {
+                    healthUnits[i].enabled = false;
+                    healthUnits[i - 1].enabled = true;
+                }
+                catch { }
             }
         }
         else if (gronkLevel || invincible)
@@ -111,6 +92,7 @@ public class PlayerData : MonoBehaviour
         inventoryText.text = collectedTemporalCoagulateInt < 10 ? "0" + collectedTemporalCoagulateInt.ToString() : collectedTemporalCoagulateInt.ToString();
     }
 
+    // This Func is unused, hmmm
     public void SubtractFromInventroy(int reqTempCoag, int planetType)
     {
         collectedTemporalCoagulateInt -= reqTempCoag;
@@ -151,7 +133,7 @@ public class PlayerData : MonoBehaviour
         FindObjectOfType<PlayerData>().dryPlanetUnlocked = false;
         FindObjectOfType<TempCoagManager>().EnableAllTemporalCoagulate();
         collectedTemporalCoagulateInt = 0;
-        inventoryText.text = collectedTemporalCoagulateInt.ToString();
+        inventoryText.text = inventoryText.text = collectedTemporalCoagulateInt < 10 ? "0" + collectedTemporalCoagulateInt.ToString() : collectedTemporalCoagulateInt.ToString();
 
         playerHealth = 4;
         HandleHealthUI();

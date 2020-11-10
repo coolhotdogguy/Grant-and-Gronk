@@ -54,37 +54,6 @@ public class BurnForest : MonoBehaviour
                     promptText.text = "Not Enough Temporal Coagulate to Alter Time. Still need  " + (requiredTemporalCoagulate - collectTC).ToString();
                 }
             }
-
-
-            /*
-            else if (!changeBack)
-            {
-                if (input)
-                {
-                    if (icePlanet)
-                    {
-                        FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(0);
-                        //FindObjectOfType<PlayerData>().AddToInventoy(requiredTemporalCoagulate);
-                        //collectTC += requiredTemporalCoagulate;
-                        FindObjectOfType<PlayerData>().icePlanet = false;
-                        changeBack = true;
-                        icePlanet = false;
-                    }
-                    else if (!icePlanet && collectTC >= requiredTemporalCoagulate && !setPlanetBoolOnExit)
-                    {
-                        FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(1);
-                        //FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 1);
-                        setPlanetBoolOnExit = true;
-                        promptText.text = "The forest is burnt";
-                        FindObjectOfType<PlayerData>().icePlanetUnlocked = true;
-                    }
-                    else if (!icePlanet && collectTC < requiredTemporalCoagulate)
-                    {
-                        promptText.text = "Not Enough Temporal Coagulate to Alter Time. Still need  " + (requiredTemporalCoagulate - collectTC).ToString();
-                    }
-                }
-            }
-            */
         }
     }
 
