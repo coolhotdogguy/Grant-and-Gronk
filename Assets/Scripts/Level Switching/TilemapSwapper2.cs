@@ -12,9 +12,9 @@ public class TilemapSwapper2 : MonoBehaviour
     Tilemap tileMap;
     LevelObjects levelObjects;
 
-    int previousPlanetType;
-    int upcomingPlanetType;
-    [HideInInspector] public int currentPlanetType; //used for BGs
+    PlanetType previousPlanetType;
+    PlanetType upcomingPlanetType;
+    [HideInInspector] public PlanetType currentPlanetType; //used for BGs
 
     [HideInInspector] public bool icePlanet;
 
@@ -31,15 +31,16 @@ public class TilemapSwapper2 : MonoBehaviour
         {
             switch (upcomingPlanetType)
             {
-                case 0: //forest type
-                    if (previousPlanetType == 1) //forest and ice
+                // I think this can be done in a better way
+                case PlanetType.Forest: //forest type
+                    if (previousPlanetType == PlanetType.Ice) //forest and ice
                     {
                         for (int i = 0; i < iceTiles.Length; i++)
                         {
                             tileMap.SwapTile(iceTiles[i], forestTiles[i]);
                         }
                     }
-                    if (previousPlanetType == 2) //forest and dry
+                    if (previousPlanetType == PlanetType.Desert) //forest and dry
                     {
                         for (int i = 0; i < dryTiles.Length; i++)
                         {
@@ -48,18 +49,18 @@ public class TilemapSwapper2 : MonoBehaviour
                     }
                     levelObjects.SetForestPlanet();
                     icePlanet = false;
-                    upcomingPlanetType = 0;
+                    upcomingPlanetType = PlanetType.Forest;
                     break;
 
-                case 1:
-                    if (previousPlanetType == 0)
+                case PlanetType.Ice:
+                    if (previousPlanetType == PlanetType.Forest)
                     {
                         for (int i = 0; i < forestTiles.Length; i++)
                         {
                             tileMap.SwapTile(forestTiles[i], iceTiles[i]);
                         }
                     }
-                    if (previousPlanetType == 2)
+                    if (previousPlanetType == PlanetType.Desert)
                     {
                         for (int i = 0; i < dryTiles.Length; i++)
                         {
@@ -68,18 +69,18 @@ public class TilemapSwapper2 : MonoBehaviour
                     }
                     levelObjects.SetIcePlanet();
                     icePlanet = true;
-                    upcomingPlanetType = 1;
+                    upcomingPlanetType = PlanetType.Ice;
                     break;
 
-                case 2:
-                    if (previousPlanetType == 0)
+                case PlanetType.Desert:
+                    if (previousPlanetType == PlanetType.Forest)
                     {
                         for (int i = 0; i < forestTiles.Length; i++)
                         {
                             tileMap.SwapTile(forestTiles[i], dryTiles[i]);
                         }
                     }
-                    if (previousPlanetType == 1)
+                    if (previousPlanetType == PlanetType.Ice)
                     {
                         for (int i = 0; i < iceTiles.Length; i++)
                         {
@@ -88,7 +89,7 @@ public class TilemapSwapper2 : MonoBehaviour
                     }
                     levelObjects.SetDryPlanet();
                     icePlanet = false;
-                    upcomingPlanetType = 2;
+                    upcomingPlanetType = PlanetType.Desert;
                     break;
 
                 default:
@@ -99,7 +100,7 @@ public class TilemapSwapper2 : MonoBehaviour
         previousPlanetType = upcomingPlanetType;
     }
 
-    public void SetPlanetTypeInt(int upcomingType)
+    public void SetPlanetTypeInt(PlanetType upcomingType)
     {
         upcomingPlanetType = upcomingType;
         currentPlanetType = upcomingType; //used for camera BGs

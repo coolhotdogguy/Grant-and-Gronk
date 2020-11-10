@@ -31,8 +31,7 @@ public class PlayerData : MonoBehaviour
     [HideInInspector] public Vector2 playerPosition;
     [SerializeField] GameObject groundGameObject;
     GameObject levelObjectsGameObject;
-    [HideInInspector] public bool icePlanet; //these two are used to track planet type to allow TC refund in Gronk Level
-    [HideInInspector] public bool dryPlanet;
+    [HideInInspector] public PlanetType currentPlanet;
     [SerializeField] TilemapSwapper2 tileSwapper;
     [HideInInspector] public bool enableBugs = true;
     public bool invincible;
@@ -93,11 +92,11 @@ public class PlayerData : MonoBehaviour
     }
 
     // This Func is unused, hmmm
-    public void SubtractFromInventroy(int reqTempCoag, int planetType)
+    /*public void SubtractFromInventroy(int reqTempCoag, PlanetType planetType)
     {
         collectedTemporalCoagulateInt -= reqTempCoag;
         inventoryText.text = collectedTemporalCoagulateInt.ToString();
-        if (planetType == 1)
+        if (planetType == PlanetType.Ice)
         {
             icePlanet = true;
         }
@@ -105,7 +104,7 @@ public class PlayerData : MonoBehaviour
         {
             dryPlanet = true;
         }
-    }
+    }*/
 
     public void DamagePlayer()
     {
@@ -215,7 +214,7 @@ public class PlayerData : MonoBehaviour
     public void SwitchToDryPlanet()
     {
         FindObjectOfType<Icons>().FadeOutPlanetIcon(1);
-        tileSwapper.SetPlanetTypeInt(2);
+        tileSwapper.SetPlanetTypeInt(PlanetType.Desert);
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(2);
         FindObjectOfType<PlayerController>().icePlanet = false;
@@ -225,7 +224,7 @@ public class PlayerData : MonoBehaviour
     public void SwitchToIcePlanet()
     {
         FindObjectOfType<Icons>().FadeOutPlanetIcon(0);
-        tileSwapper.SetPlanetTypeInt(1);
+        tileSwapper.SetPlanetTypeInt(PlanetType.Ice);
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(1);
         FindObjectOfType<PlayerController>().icePlanet = true;
@@ -242,7 +241,7 @@ public class PlayerData : MonoBehaviour
         {
             FindObjectOfType<Icons>().FadeOutPlanetIcon(2);
         }
-        tileSwapper.SetPlanetTypeInt(0);
+        tileSwapper.SetPlanetTypeInt(PlanetType.Forest);
         tileSwapper.UpdateTilesAndObjects();
         FindObjectOfType<RabbitManager>().HandleRabbitVisibility(0);
         FindObjectOfType<PlayerController>().icePlanet = false;
@@ -256,7 +255,7 @@ public class PlayerData : MonoBehaviour
         groundGameObject.GetComponent<TilemapCollider2D>().enabled = true;
         levelObjectsGameObject.SetActive(true);
         tileSwapper.UpdateTilesAndObjects();
-        FindObjectOfType<SFXPlayer>().SwitchAmbience(FindObjectOfType<TilemapSwapper2>().currentPlanetType);
+        FindObjectOfType<SFXPlayer>().SwitchAmbience((int)FindObjectOfType<TilemapSwapper2>().currentPlanetType);
     }
 
     private void LoadGronkLevel()

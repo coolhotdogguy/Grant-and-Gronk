@@ -53,36 +53,6 @@ public class DamRiver : MonoBehaviour
                     promptText.text = "Not Enough Temporal Coagulate to Alter Time. Still need  " + (requiredTemporalCoagulate - collectTC).ToString();
                 }
             }
-
-
-            /*
-            if (input)
-                {
-                    if (dryPlanet)
-                    {
-                        FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(0);
-                        //FindObjectOfType<PlayerData>().AddToInventoy(requiredTemporalCoagulate);
-                        //collectTC += requiredTemporalCoagulate;
-                        FindObjectOfType<PlayerData>().dryPlanet = false;
-                        dryPlanet = false;
-                    }
-                    else if (!dryPlanet)
-                    {
-                        if (collectTC >= requiredTemporalCoagulate && !setPlanetBoolOnExit) //change planet type
-                        {
-                            FindObjectOfType<TilemapSwapper2>().SetPlanetTypeInt(2);
-                            //FindObjectOfType<PlayerData>().SubtractFromInventroy(requiredTemporalCoagulate, 2);
-                            setPlanetBoolOnExit = true;
-                            promptText.text = "River has been dammed";
-                            FindObjectOfType<PlayerData>().dryPlanetUnlocked = true;
-                        }
-                        if (collectTC < requiredTemporalCoagulate)
-                        {
-                            promptText.text = "Not Enough Temporal Coagulate to Alter Time. Needed " + (requiredTemporalCoagulate - collectTC).ToString();
-                        }
-                    }
-                }
-            */
         }
     }
 
