@@ -87,6 +87,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "JumpAxis",
+                    "id": "a2b3921c-8651-4234-9e46-0414283efbf2",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "d091cac6-b545-42ff-ad8f-a120af1c60f4",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "e6aa1d73-c4bb-4932-85b2-16ca923bc1c1",
                     "path": "<Keyboard>/escape",
